@@ -1,0 +1,85 @@
+----local project_library_path = "/path/to/project/lib"
+----local cmd = {"ngserver", "--stdio", "--tsProbeLocations", project_library_path , "--ngProbeLocations", project_library_path}
+--
+----local PATHTOMASON = require('');
+--
+--return {
+--	{
+--		"williamboman/mason.nvim",
+--		config = function()
+--			require("mason").setup({
+--				log_level = vim.log.levels.debug,
+--				PATH = "prepend", -- "skip"
+--			})
+--		end,
+--	},
+--	{
+--		"williamboman/mason-lspconfig.nvim",
+--		config = function()
+--			require("mason-lspconfig").setup({
+--				ensure_installed = { "lua_ls", "tsserver", "angularls", "jdtls", "yamlls", "html" },
+--				automatic_installation = true,
+--			})
+--		end,
+--	},
+--	{
+--		"neovim/nvim-lspconfig",
+--		config = function()
+--			-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+--			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+--
+--			local lspconfig = require("lspconfig")
+--
+--			--lua
+--			lspconfig.lua_ls.setup({
+--				capabilities = capabilities,
+--				cmd = { vim.fn.expand("C:/Neovim/nvim-data/nvim-data/mason/bin/lua-language-server.cmd") },
+--				diagnostics = { globals = { "vim" } },
+--			})
+--
+--			--angulars
+--		--	lspconfig.angularls.setup({
+--		--		capabilities = capabilities,
+--		--		cmd = { "ngserver.cmd", "--stdio" },
+--		--		root_dir = lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json"),
+--		--		on_attach = function()
+--		--			-- Additional setup or customization when attaching the LSP client
+--		--			print("Typescript Language server attached")
+--		--		end,
+--		--	})
+--
+--			--typescript
+--			lspconfig.tsserver.setup({
+--				capabilities = capabilities,
+--				cmd = { "typescript-language-server.cmd", "--stdio" },
+--				filetypes = { "typescript", "javascript" },
+--				root_dir = lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json"),
+--				on_attach = function()
+--					-- Additional setup or customization when attaching the LSP client
+--					print("Typescript Language server attached")
+--				end,
+--			})
+--
+--			--java
+--			lspconfig.jdtls.setup({
+--				capabilities = capabilities,
+--				cmd = { vim.fn.expand("C:/Neovim/nvim-data/nvim-data/mason/bin/jdtls.cmd") },
+--				root_dir = function()
+--					return vim.fn.getcwd()
+--				end,
+--			})
+--
+--			lspconfig.yamlls.setup({
+--				capabilities = capabilities,
+--			})
+--
+--			lspconfig.html.setup({
+--				capabilities = capabilities,
+--			})
+--
+--			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+--			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+--			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+--		end,
+--	},
+--}
