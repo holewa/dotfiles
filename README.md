@@ -7,6 +7,6 @@ This automated setup is currently only configured for Fedora machines.
 ## How to run
 
 ```shell
-export GITHUB_USERNAME=
+export GITHUB_USERNAME=holewa
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
 ```
