@@ -1,0 +1,47 @@
+let mapleader=' '
+set ic
+set smartcase
+nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+
+nnoremap <TAB> :action PreviousTab<CR>
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap <C-d> <C-d>zz
+nnoremap<C-u> <C-u>zz
+
+set clipboard+=unnamed
+set clipboard+=ideaput
+nnoremap \e :e ~/.ideavimrc<CR>
+nnoremap \r :action <CR>
+nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
+
+" options and mappings that are supported by both Vim and IdeaVim
+set nu
+set relativenumber
+
+if has('ide')
+	" mappings and options that exist only in IdeaVim
+	map <leader>sf <Action>(GotoFile)
+	map <leader>sg <Action>(FindInPath)
+map <leader>b <Action>(Switcher)
+
+map <leader>r <Action>(RenameElement)
+
+	map <leader>s :w<CR>
+
+	if &ide =~? 'intellij idea'
+	if &ide =~? 'community'
+	" some mappings and options for IntelliJ IDEA Community Edition
+	elseif &ide =~? 'ultimate'
+	" some mappings and options for IntelliJ IDEA Ultimate Edition
+	endif
+	elseif &ide =~? 'pycharm'
+	" PyCharm specific mappings and options
+	endif
+	else
+	" some mappings for Vim/Neovim
+	nnoremap <leader>sf <cmd>Telescope find_files<cr>
+	endif
+
