@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#nvim
+alias vi='nvim'
 #Git aliases
 alias gs='git status'
 #Git combo which will ask for commit, otherwise do it all
