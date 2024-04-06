@@ -2,6 +2,8 @@
 
 #Git aliases
 alias gs='git status'
+#Git combo which will ask for commit, otherwise do it all
+alias gacp='git add . && git commit -e && if [ $? -eq 0 ]; then git push; fi'
 
 #Chezmoi
 alias ch='chezmoi'
