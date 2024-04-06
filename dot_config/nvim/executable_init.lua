@@ -6,6 +6,7 @@ vim.g.maplocalleader = " "
 vim.keymap.set("v", "p", '"_dP')
 vim.keymap.set("n", "<C-d", "<C-d>zz")
 vim.keymap.set("n", "<C-u", "<C-u>zz")
+vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
 
 vim.wo.number = true
 vim.wo.relativenumber = true
@@ -37,7 +38,12 @@ require("lazy").setup({
   --  "mfussenegger/nvim-jdtls"
   --},
 
-  require 'kickstart.plugins.nvim-tree',
+--  require 'kickstart.plugins.nvim-tree',
+  require 'plugins.neo-tree',
+  require 'plugins.autotag',
+  require 'plugins.comment',
+  require 'plugins.dashboard',
+  require 'plugins.cmdline',
 
   {
     'nvim-java/nvim-java',
@@ -762,7 +768,7 @@ cmp.setup({
     completeopt = "menu,menuone,noinsert",
   },
   mapping = cmp.mapping.preset.insert({
-    ["<C-n>"] = cmp.mapping.select_next_item(),
+    -- ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
