@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#Git aliases
+alias gs='git status'
+
+#Chezmoi
+alias ch='chezmoi'
