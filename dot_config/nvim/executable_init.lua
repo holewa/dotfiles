@@ -1,3 +1,5 @@
+vim.g.python3_host_prog = "/usr/bin/python3"
+vim.g.loaded_perl_provider = 0
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -25,6 +27,8 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+
+
 
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
@@ -95,7 +99,7 @@ require("lazy").setup({
     config = function()
       vim.keymap.set("n", "<leader>gb", ":Git blame<CR>")
       vim.keymap.set("n", "<leader>gs", ":Git<CR>", { desc = "Git status" })
-      vim.keymap.set("n", "<leader>gc", ":Git commit<CR>")
+      vim.keymap.set("n", "<leader>gco", ":Git commit<CR>")
       vim.keymap.set("n", "<leader>gp", ":Git push<CR>")
       vim.keymap.set("n", "<leader>gb", ":Git branch<CR>")
       vim.keymap.set("n", "<leader>gl", ":Git log<CR>")
