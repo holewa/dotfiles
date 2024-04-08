@@ -1,8 +1,14 @@
 vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.loaded_perl_provider = 0
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.keymap.set("n", "<C-N>", ":Neotree toggle show<CR>", { silent = false })
+vim.keymap.set("n", "<C-n>", ":Neotree toggle reveal focus<CR>")
+
+vim.api.nvim_set_keymap("n", "<leader>as", ":ASToggle<CR>", {})
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.keymap.set("v", "p", '"_dP')
@@ -28,6 +34,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Paste in terminal
+vim.keymap.set('t', '<c-r>', function()
+  local next_char_code = vim.fn.getchar()
+  local next_char = vim.fn.nr2char(next_char_code)
+  return '<C-\\><C-N>"'..next_char..'pi'
+end, { expr = true })
 
 
 -- [[ Configure plugins ]]
@@ -48,7 +60,20 @@ require("lazy").setup({
   require 'plugins.comment',
   require 'plugins.dashboard',
   require 'plugins.cmdline',
-
+  require 'plugins.chatgpt',
+  require 'plugins.auto-save',
+  require 'plugins.tmux-navigator',
+{
+    "Exafunction/codeium.nvim",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "hrsh7th/nvim-cmp",
+    },
+    config = function()
+        require("codeium").setup({
+        })
+    end
+},
   {
     'nvim-java/nvim-java',
     dependencies = {

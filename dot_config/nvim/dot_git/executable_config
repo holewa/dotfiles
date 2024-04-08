@@ -10,3 +10,6 @@
 [branch "main"]
 	remote = origin
 	merge = refs/heads/main
+[user]
+	name = Joel Holewa
+	email = holewa@gmail.com
