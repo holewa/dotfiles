@@ -62,7 +62,7 @@ require("lazy").setup({
   require 'plugins.cmdline',
   require 'plugins.chatgpt',
   require 'plugins.auto-save',
-  require 'plugins.tmux-navigator',
+  require 'plugins.vim-tmux-navigator',
 {
     "Exafunction/codeium.nvim",
     dependencies = {
@@ -381,10 +381,6 @@ require("lazy").setup({
 vim.keymap.set("n", "<leader>icl", "iconsole.log('')<ESC>hi")
 vim.keymap.set("n", "<leader>icn", "oconsole.log('')<ESC>hi")
 
---save
-vim.keymap.set("n", "<C-s>", ":w<CR>")
-vim.keymap.set("n", "<C-H>", ":q<CR>")
-
 -- Enable the following language servers
 local servers = {
   angularls = { filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'spec', 'scss' } },
@@ -685,7 +681,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-  nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+  nmap("<C-9>", vim.lsp.buf.signature_help, "Signature Documentation")
 
   -- Lesser used LSP functionality
   nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
