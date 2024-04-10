@@ -1,6 +1,5 @@
 vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.loaded_perl_provider = 0
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -827,6 +826,8 @@ cmp.setup({
     { name = "path" },
   },
 })
+
+require("keymaps")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
