@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #nvim
-alias vi='nvim'
+alias vi='pass show -c chatgpt && nvim'
 #Git aliases
 alias gs='git status'
 #Git combo which will ask for commit, otherwise do it all
@@ -9,3 +9,19 @@ alias gacp='git add . && git commit -e && if [ $? -eq 0 ]; then git push; fi'
 
 #Chezmoi
 alias ch='chezmoi'
+
+#Tmux
+# Define alias function
+tma() {
+    if [ -z "$1" ]; then
+        tmux attach
+    else
+        tmux attach -t "$1"
+    fi
+}
+
+# Create alias
+alias tma='tma'
+alias tm='tmux'
+alias tml'tmux ls'
+
