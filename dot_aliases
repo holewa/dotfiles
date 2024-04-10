@@ -12,7 +12,7 @@ alias ch='chezmoi'
 
 #Tmux
 # Define alias function
-tma() {
+tmaFunction() {
     if [ -z "$1" ]; then
         tmux attach
     else
@@ -21,7 +21,6 @@ tma() {
 }
 
 # Create alias
-alias tma='tma'
+alias tma='tmaFunction'
 alias tm='tmux'
-alias tml'tmux ls'
-
+alias tml='tmux ls'
