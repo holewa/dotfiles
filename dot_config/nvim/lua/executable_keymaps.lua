@@ -21,7 +21,6 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Paste from clipboard
 vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
-
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- This is going to get me cancelled
@@ -33,16 +32,16 @@ vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 --unbinding cuz ov vim navigation between windows
 --vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+--vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+--TODO: Check this out! 
+vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "[R]eplace [w]ord" })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-
---vim.keymap.set("n", "<C-n>", ":Neotree toggle reveal<CR>")
+vim.keymap.set("n", "<C-n>", ":Neotree toggle reveal<CR>")
 
 --harpoon
 local mark = require("harpoon.mark")
@@ -66,6 +65,6 @@ vim.keymap.set("n", "<C-s>", ":w<CR>")
 
 --ChatGPT
 vim.keymap.set("n", "<leader>cha", ":ChatGPT<CR>", { desc = "[A]sk ChatGPT" })
-vim.keymap.set("n", "<leader>chr", ":ChatGPT[R]un ")
+vim.keymap.set("n", "<leader>chr", ":ChatGPTRun ", { desc = "[R]un tasks" })
 vim.keymap.set("n", "<leader>chf", ":ChatGPTRun fix_bugs", { desc = "[F]ix bugs" })
 vim.keymap.set("n", "<leader>cht", ":ChatGPTRun add_tests", { desc = "[A]dd tests" })

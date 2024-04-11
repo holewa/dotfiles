@@ -1,12 +1,12 @@
+-- Set <space> as the leader key
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+-- See `:help mapleader`
+vim.api.nvim_set_keymap("n", "<leader>as", ":ASToggle<CR>", {})
+
 vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.loaded_perl_provider = 0
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.keymap.set("n", "<C-N>", ":Neotree toggle show<CR>", { silent = false })
 vim.keymap.set("n", "<C-n>", ":Neotree toggle reveal focus<CR>")
-
-vim.api.nvim_set_keymap("n", "<leader>as", ":ASToggle<CR>", {})
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -559,8 +559,6 @@ vim.keymap.set("n", "<leader>sG", ":LiveGrepGitRoot<cr>", { desc = "[S]earch by 
 vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
 vim.keymap.set("n", "<leader>sr", require("telescope.builtin").resume, { desc = "[S]earch [R]esume" })
 
-vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
-vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
