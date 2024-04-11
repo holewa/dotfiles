@@ -12,7 +12,7 @@ alias ch='chezmoi'
 
 #Tmux
 # Define alias function
-tmaFunction() {
+tmuxAttach() {
     if [ -z "$1" ]; then
         tmux attach
     else
@@ -20,7 +20,16 @@ tmaFunction() {
     fi
 }
 
+
+tmuxNewSession() {
+    if [ -z "$1" ]; then
+        tmux 
+    else
+        tmux new-session -s "$1"
+    fi
+}
+
 # Create alias
-alias tma='tmaFunction'
-alias tm='tmux'
+alias tma='tmuxAttach'
+alias tm='tmuxNewSession'
 alias tml='tmux ls'
