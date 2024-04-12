@@ -60,11 +60,12 @@ vim.keymap.set("n", "<C-s>", function()
   ui.nav_file(4)
 end)
 
---save
-vim.keymap.set("n", "<C-s>", ":w<CR>")
+--toggle auto-save
+vim.api.nvim_set_keymap("n", "<C-s>", ":ASToggle<CR>", {})
 
 --ChatGPT
 vim.keymap.set("n", "<leader>cha", ":ChatGPT<CR>", { desc = "[A]sk ChatGPT" })
 vim.keymap.set("n", "<leader>chr", ":ChatGPTRun ", { desc = "[R]un tasks" })
 vim.keymap.set("n", "<leader>chf", ":ChatGPTRun fix_bugs", { desc = "[F]ix bugs" })
 vim.keymap.set("n", "<leader>cht", ":ChatGPTRun add_tests", { desc = "[A]dd tests" })
+

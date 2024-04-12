@@ -62,6 +62,7 @@ require("lazy").setup({
   require 'plugins.chatgpt',
   require 'plugins.auto-save',
   require 'plugins.vim-tmux-navigator',
+  require 'plugins.vim-tmux-navigator',
 {
     "Exafunction/codeium.nvim",
     dependencies = {
@@ -108,7 +109,6 @@ require("lazy").setup({
 
           -- Angular
           if is_angular then
-            print('Angular')
             vim.keymap.set("n", "<leader>oh", find('.component.html'), {desc = "html-file"})
             vim.keymap.set("n", "<leader>ot", find('.component.ts'), {desc = "ts-file"})
             vim.keymap.set("n", "<leader>oc", find('.component.scss'), {desc = "css-file"})
@@ -522,6 +522,7 @@ end
 -- Custom live_grep function to search in git root
 local function live_grep_git_root()
   local git_root = find_git_root()
+  print('giit rooot: ', git_root)
   if git_root then
     require("telescope.builtin").live_grep({
       search_dirs = { git_root },
@@ -826,6 +827,7 @@ cmp.setup({
 })
 
 require("keymaps")
+require("plugins.angular")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
