@@ -13,7 +13,6 @@ vim.g.maplocalleader = " "
 vim.keymap.set("v", "p", '"_dP')
 vim.keymap.set("n", "<C-d", "<C-d>zz")
 vim.keymap.set("n", "<C-u", "<C-u>zz")
-vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
 
 vim.wo.number = true
 vim.wo.relativenumber = true
@@ -37,7 +36,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.keymap.set('t', '<c-r>', function()
   local next_char_code = vim.fn.getchar()
   local next_char = vim.fn.nr2char(next_char_code)
-  return '<C-\\><C-N>"'..next_char..'pi'
+  return '<C-\\><C-N>"' .. next_char .. 'pi'
 end, { expr = true })
 
 
@@ -49,11 +48,6 @@ end, { expr = true })
 --    as they will be available in your neovim runtime.
 require("lazy").setup({
   -- NOTE: First, some plugins that don't require any configuration
-  --{
-  --  "mfussenegger/nvim-jdtls"
-  --},
-
---  require 'kickstart.plugins.nvim-tree',
   require 'plugins.neo-tree',
   require 'plugins.autotag',
   require 'plugins.comment',
@@ -62,18 +56,19 @@ require("lazy").setup({
   require 'plugins.chatgpt',
   require 'plugins.auto-save',
   require 'plugins.vim-tmux-navigator',
-  require 'plugins.vim-tmux-navigator',
-{
+  require 'plugins.noice',
+  require 'plugins.lualine',
+  {
     "Exafunction/codeium.nvim",
     dependencies = {
-        "nvim-lua/plenary.nvim",
-        "hrsh7th/nvim-cmp",
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
     },
     config = function()
-        require("codeium").setup({
-        })
+      require("codeium").setup({
+      })
     end
-},
+  },
   {
     'nvim-java/nvim-java',
     dependencies = {
@@ -98,7 +93,6 @@ require("lazy").setup({
   {
     "Everduin94/nvim-quick-switcher",
     config = function()
-
       local function find(file_regex)
         return function() require('nvim-quick-switcher').find(file_regex, {}) end
       end
@@ -109,9 +103,9 @@ require("lazy").setup({
 
           -- Angular
           if is_angular then
-            vim.keymap.set("n", "<leader>oh", find('.component.html'), {desc = "html-file"})
-            vim.keymap.set("n", "<leader>ot", find('.component.ts'), {desc = "ts-file"})
-            vim.keymap.set("n", "<leader>oc", find('.component.scss'), {desc = "css-file"})
+            vim.keymap.set("n", "<leader>oh", find('.component.html'), { desc = "html-file" })
+            vim.keymap.set("n", "<leader>ot", find('.component.ts'), { desc = "ts-file" })
+            vim.keymap.set("n", "<leader>oc", find('.component.scss'), { desc = "css-file" })
           end
         end
       })
@@ -265,42 +259,6 @@ require("lazy").setup({
     end,
   },
 
-  {
-    -- Set lualine as statusline
-    "nvim-lualine/lualine.nvim",
-    -- See `:help lualine.txt`
-    config = function()
-      require('lualine').setup {
-        options = {
-          fmt = string.lower,
-          theme = 'auto', --dracula
-          icons_enabled = false,
-          component_separators = "|",
-          section_separators = "",
-        },
-        sections = {
-          lualine_a = { 'mode' },
-          lualine_b = {},
-          lualine_c = {
-            {
-              'filename',
-              path = 1 }
-          },
-          lualine_x = {
-            'branch',
-            --'diff',
-            --'diagnostics'
-          },
-          lualine_y = { 'progress' },
-          lualine_z = { 'location' }
-        }
-      }
-    end,
-    opts = {
-      options = {
-      },
-    },
-  },
 
   {
     -- Add indentation guides even on blank lines
@@ -826,7 +784,17 @@ cmp.setup({
   },
 })
 
+
+
 require("keymaps")
+
+--local notes = require("plugins.notes")
+
+--vim.keymap.set("n", "<Leader>cn", notes.create_input_window)
+
+--format windows format to unix
+vim.keymap.set("n", "<Leader>.", ": %!dos2unix<CR>")
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
