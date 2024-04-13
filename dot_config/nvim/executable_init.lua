@@ -41,11 +41,8 @@ end, { expr = true })
 
 
 -- [[ Configure plugins ]]
--- NOTE: Here is where you install your plugins.
+-- NOTE: Here is where you install your pluginz.
 --  You can configure plugins using the `config` key.
---
---  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
 require("lazy").setup({
   -- NOTE: First, some plugins that don't require any configuration
   require 'plugins.neo-tree',
@@ -58,16 +55,27 @@ require("lazy").setup({
   require 'plugins.vim-tmux-navigator',
   require 'plugins.noice',
   require 'plugins.lualine',
+  require 'plugins.obsidian',
+
   {
-    "Exafunction/codeium.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("codeium").setup({
-      })
-    end
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                notes = "~/notes",
+              },
+            },
+          },
+        },
+      }
+    end,
   },
   {
     'nvim-java/nvim-java',
