@@ -1,14 +1,20 @@
 #!/bin/bash
 
 #nvim
-alias vi='pass show -c chatgpt && nvim'
+alias v='pass show chatgpt && nvim'
+alias vi='echo vi is old shit, just use v'
+
 #Git aliases
 alias gs='git status'
 #Git combo which will ask for commit, otherwise do it all
 alias gacp='git add . && git commit -e && if [ $? -eq 0 ]; then git push; fi'
 
+#Copypath
+alias copa='copypath'
+
 #Chezmoi
 alias ch='chezmoi'
+alias chan='chezmoi add -r ~/.config/nvim/ && chezmoi cd && git status'
 
 #Tmux
 # Define alias function
