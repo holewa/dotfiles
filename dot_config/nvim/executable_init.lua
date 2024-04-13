@@ -2,7 +2,6 @@
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 -- See `:help mapleader`
 vim.api.nvim_set_keymap("n", "<leader>as", ":ASToggle<CR>", {})
-
 vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.loaded_perl_provider = 0
 vim.keymap.set("n", "<C-N>", ":Neotree toggle show<CR>", { silent = false })
@@ -49,35 +48,34 @@ require("lazy").setup({
   require 'plugins.autotag',
   require 'plugins.comment',
   require 'plugins.dashboard',
-  require 'plugins.cmdline',
+  -- require 'plugins.cmdline',
   require 'plugins.chatgpt',
   require 'plugins.auto-save',
   require 'plugins.vim-tmux-navigator',
   require 'plugins.noice',
   require 'plugins.lualine',
-  require 'plugins.obsidian',
-
-  {
-    'nvim-java/nvim-java',
+  require 'plugins.nvim-java',
+  require 'plugins.harpoon',
+{
+    "Exafunction/codeium.nvim",
     dependencies = {
-      'nvim-java/lua-async-await',
-      'nvim-java/nvim-java-core',
-      'nvim-java/nvim-java-test',
-      'nvim-java/nvim-java-dap',
-      'MunifTanjim/nui.nvim',
-      'neovim/nvim-lspconfig',
-      'mfussenegger/nvim-dap',
-      {
-        'williamboman/mason.nvim',
-        opts = {
-          registries = {
-            'github:nvim-java/mason-registry',
-            'github:mason-org/mason-registry',
-          },
-        },
-      }
+        "nvim-lua/plenary.nvim",
+        "hrsh7th/nvim-cmp",
     },
-  },
+    config = function()
+        require("codeium").setup({
+        })
+    end
+},
+{
+  "epwalsh/obsidian.nvim",
+  version = "*",  -- recommended, use latest release instead of latest commit
+  lazy = true,
+  ft = "markdown",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+  }
+},
   {
     "Everduin94/nvim-quick-switcher",
     config = function()
@@ -86,7 +84,7 @@ require("lazy").setup({
       end
 
       vim.api.nvim_create_autocmd({ 'UIEnter' }, {
-        callback = function(event)
+        callback = function()
           local is_angular = next(vim.fs.find({ "angular.json", "nx.json" }, { upward = true }))
 
           -- Angular
@@ -98,8 +96,7 @@ require("lazy").setup({
         end
       })
     end
-  },
-  {
+  },{
     -- Git related plugins
     "tpope/vim-fugitive",
     config = function()
@@ -304,21 +301,6 @@ require("lazy").setup({
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
 
-  --harpon
-  {
-    "ThePrimeagen/harpoon",
-    config = function()
-      local mark = require("harpoon.mark")
-      local ui = require("harpoon.ui")
-
-      vim.keymap.set("n", "<leader>a", mark.add_file)
-      vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
-      vim.keymap.set("n", "<TAB>", ui.nav_next)
-      vim.keymap.set("n", "<TAB>", ui.nav_prev)
-
-      vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
-    end
-  }
 }, {})
 
 
@@ -769,6 +751,7 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "path" },
+    { name = "codeium"},
   },
 })
 
