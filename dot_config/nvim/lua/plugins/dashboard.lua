@@ -19,20 +19,20 @@ return {
             key = 'f',
           },
           {
+            desc = ' Apps',
+            group = 'DiagnosticHint',
+            action = 'Telescope app',
+            key = 'a',
+          },
+          {
             desc = ' dotfiles',
             group = 'Number',
             action = 'Telescope dotfiles',
             key = 'd',
           },
-          {
-            desc = ' obsidian',
-            group = 'Number',
-            action = 'Telescope find_files cwd=~/brain2',
-            key = 'o',
-          },
         },
-      }
+      },
     }
   end,
-  dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+  dependencies = { { 'nvim-tree/nvim-web-devicons' } },
 }

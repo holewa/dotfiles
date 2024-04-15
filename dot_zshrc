@@ -1,6 +1,9 @@
 alias sz='source .zshrc'
 
 source ~/.aliases
+POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_CUSTOM_NERDFONT_PATH="/home/hoaje/.local/share/fonts/HackNerdFont-Regular.ttf"
+
 
 export EDITOR=nvim
 # If you come from bash you might have to change your $PATH.
