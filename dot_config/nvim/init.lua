@@ -31,6 +31,7 @@ require('lazy').setup({
   require 'plugins.nvim-java',
   require 'plugins.harpoon',
   require 'plugins.obsidian',
+  require 'plugins.telescope-undo',
 
   { -- This plugin
     'Zeioth/compiler.nvim',
@@ -791,6 +792,8 @@ local luarocks_cpath = {
 package.cpath = package.cpath .. ';' .. table.concat(luarocks_cpath, ';')
 
 vim.opt.runtimepath:append(vim.fs.joinpath(rocks_config.rocks_path, 'lib', 'luarocks', 'rocks-5.1', '*', '*'))
+
+vim.g.rocks_nvim.rocks_path = ''
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

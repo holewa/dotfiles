@@ -3,10 +3,10 @@ vim.g.maplocalleader = ' '
 
 --vim.g.have_nerd_font = false
 
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
+vim.cmd 'set expandtab'
+vim.cmd 'set tabstop=2'
+vim.cmd 'set softtabstop=2'
+vim.cmd 'set shiftwidth=2'
 
 -- [[ Setting options ]]
 --
@@ -80,8 +80,8 @@ vim.opt.scrolloff = 10
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 
-
 --for vim to know where python is installed
-vim.g.python3_host_prog = "/usr/bin/python3"
+vim.g.python3_host_prog = '/usr/bin/python3'
+
 --dont remember what this do
 vim.g.loaded_perl_provider = 0
