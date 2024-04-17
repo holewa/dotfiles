@@ -1,5 +1,13 @@
 #!/bin/bash
 
+#linux commands
+alias cl='clear'
+alias cls='clear && ls'
+
+#aliases-file
+alias va='nvim ~/.aliases'
+alias sa='source ~/.aliases'
+
 #nvim
 alias v='pass show chatgpt && nvim'
 alias vi='echo vi is old shit, just use v'
@@ -39,3 +47,20 @@ tmuxNewSession() {
 alias tma='tmuxAttach'
 alias tm='tmuxNewSession'
 alias tml='tmux ls'
+
+#cd directly to specicif directorys
+alias tf='cd ~/af-projects/tajma-frontend/'
+alias tb='cd ~/af-projects/tajma-backend/'
+alias tc='cd ~/af-projects/tajma-config/argocd_ocp4/'
+alias vc='cd ~/.config/nvim/'
+
+#Node
+alias node='ts-node'
+
+#Open directory in vim
+alias vvc='cd ~/.config/nvim/ &&; v'
+alias vtf='cd ~/af-projects/tajma-frontend &&; v'
+alias vtb='cd ~/af-projects/tajma-backend &&; v'
+alias vtc='cd ~/af-projects/tajma-config &&; v'
+
+
