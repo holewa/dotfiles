@@ -30,6 +30,7 @@ require('lazy').setup({
   require 'plugins.obsidian',
   require 'plugins.telescope-undo',
   require 'plugins.nvim-web-devicons',
+  { 'EdenEast/nightfox.nvim' },
 
   { -- This plugin
     'Zeioth/compiler.nvim',
