@@ -1,6 +1,3 @@
--- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
-
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -32,6 +29,7 @@ require('lazy').setup({
   require 'plugins.harpoon',
   require 'plugins.obsidian',
   require 'plugins.telescope-undo',
+  require 'plugins.nvim-web-devicons',
 
   { -- This plugin
     'Zeioth/compiler.nvim',
@@ -768,8 +766,8 @@ require 'vim-options'
 
 --Rocks.nvim
 local rocks_config = {
-  rocks_path = vim.env.HOME .. '/.local/share/nvim/rocks',
-  luarocks_binary = vim.env.HOME .. '/.local/share/nvim/rocks/bin/luarocks',
+  rocks_path = vim.fn.stdpath 'data' .. '/rocks',
+  luarocks_binary = 'luarocks',
 }
 
 vim.g.rocks_nvim = rocks_config
@@ -783,17 +781,9 @@ package.path = package.path .. ';' .. table.concat(luarocks_path, ';')
 local luarocks_cpath = {
   vim.fs.joinpath(rocks_config.rocks_path, 'lib', 'lua', '5.1', '?.so'),
   vim.fs.joinpath(rocks_config.rocks_path, 'lib64', 'lua', '5.1', '?.so'),
-  -- Remove the dylib and dll paths if you do not need macos or windows support
-  -- vim.fs.joinpath(rocks_config.rocks_path, 'lib', 'lua', '5.1', '?.dylib'),
-  -- vim.fs.joinpath(rocks_config.rocks_path, 'lib64', 'lua', '5.1', '?.dylib'),
-  -- vim.fs.joinpath(rocks_config.rocks_path, 'lib', 'lua', '5.1', '?.dll'),
-  -- vim.fs.joinpath(rocks_config.rocks_path, 'lib64', 'lua', '5.1', '?.dll'),
 }
 package.cpath = package.cpath .. ';' .. table.concat(luarocks_cpath, ';')
 
-vim.opt.runtimepath:append(vim.fs.joinpath(rocks_config.rocks_path, 'lib', 'luarocks', 'rocks-5.1', '*', '*'))
-
-vim.g.rocks_nvim.rocks_path = ''
-
+vim.opt.runtimepath:append(vim.fs.joinpath(rocks_config.rocks_path, 'lib', 'luarocks', 'rocks-5.1', 'rocks.nvim', '*'))
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

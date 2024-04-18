@@ -1,0 +1,9 @@
+; work details
+[includeIf "gitdir:~/af-projects/"]
+  path = ~/af-projects/.gitconfig
+
+;personal details 
+[includeIf "gitdir:~/other-projects//"]
+  path = ~/other-projects/.gitconfig
+[rerere]
+	enabled = true
