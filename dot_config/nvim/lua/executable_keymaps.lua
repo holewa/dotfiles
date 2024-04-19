@@ -17,7 +17,7 @@ vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
 --LspInfo
-vim.keymap.set('n', '<C-i>', ':LspInfo<CR>')
+-- vim.keymap.set('n', '<C-i>', ':LspInfo<CR>')
 
 -- greatest remap ever
 vim.keymap.set('x', '<leader>p', [["_dP]])
@@ -29,6 +29,9 @@ vim.keymap.set('n', '<leader>Y', [["+Y]])
 -- Paste from clipboard
 vim.keymap.set({ 'n', 'v' }, '<leader>p', [["+p]])
 vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
+
+--Replace word with last yanked word
+vim.keymap.set('n', 'cr', 'viwp')
 
 -- This is going to get me cancelled
 vim.keymap.set('i', '<C-c>', '<Esc>')

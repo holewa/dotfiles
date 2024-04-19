@@ -27,9 +27,11 @@ require('lazy').setup({
   require 'plugins.lualine',
   require 'plugins.nvim-java',
   require 'plugins.harpoon',
-  require 'plugins.obsidian',
+  -- require 'plugins.obsidian',
   require 'plugins.telescope-undo',
   require 'plugins.nvim-web-devicons',
+  require 'plugins.vimwiki',
+  -- NOTE: check out themes below with :colorscheme
   { 'EdenEast/nightfox.nvim' },
 
   { -- This plugin
