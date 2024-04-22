@@ -21,19 +21,20 @@ require('lazy').setup({
   require 'plugins.dashboard',
   require 'plugins.fine-cmdline',
   require 'plugins.chatgpt',
-  --require 'plugins.auto-save',
   require 'plugins.vim-tmux-navigator',
   require 'plugins.noice',
   require 'plugins.lualine',
   require 'plugins.nvim-java',
   require 'plugins.harpoon',
-  -- require 'plugins.obsidian',
   require 'plugins.telescope-undo',
   require 'plugins.nvim-web-devicons',
-  require 'plugins.vimwiki',
+  -- require 'plugis.vimwiki',
+  { 'nvim-treesitter/nvim-treesitter' },
+  { 'dlvandenberg/tree-sitter-angular' },
+  --require 'plugins.auto-save',
+  -- require 'plugins.obsidian',
   -- NOTE: check out themes below with :colorscheme
-  { 'EdenEast/nightfox.nvim' },
-
+  { 'xiyaowong/transparent.nvim' },
   { -- This plugin
     'Zeioth/compiler.nvim',
     cmd = { 'CompilerOpen', 'CompilerToggleResults', 'CompilerRedo' },
@@ -84,26 +85,33 @@ require('lazy').setup({
             vim.keymap.set('n', '<leader>ot', find '.component.ts', { desc = 'ts-file' })
             vim.keymap.set('n', '<leader>oc', find '.component.scss', { desc = 'css-file' })
           end
+
+          -- vim.filetype.add {
+          --   pattern = {
+          --     ['.*%.component%.html'] = 'angular.html', -- Sets the filetype to `angular.html` if it matches the pattern
+          --   },
+          -- }
+          -- vim.api.nvim_create_autocmd('FileType', {
+          --   pattern = 'angular.html',
+          --   callback = function()
+          --     vim.treesitter.language.register('angular', 'angular.html') -- Register the filetype with treesitter for the `angular` language/parser
+          --   end,
+          -- })
         end,
       })
     end,
   },
 
   --plugins from kickstarter
-  {
-    -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
-    main = 'ibl',
-    opts = {
-      exclude = { filetypes = { 'dashboard' } },
-    },
-  },
 
   --keymaps from kickstarter
 
+  -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+
+  -- NOTE: Plugins can also be added by using a table,
+  -- with the first argument being the link and the following
+  -- keys can be used to configure plugin behavior/loading/etc.
   --
   -- Use `opts = {}` to force a plugin to be loaded.
   --
@@ -422,8 +430,15 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
-        angularls = { filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'spec', 'scss' } },
-
+        angularls = {
+          filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'spec', 'scss' },
+          cmd = { 'ngserver.cmd', '--stdio' },
+          -- root_dir = lspconfig.util.root_pattern('tsconfig.json', 'jsconfig.json'),
+          on_attach = function()
+            -- Additional setup or customization when attaching the LSP client
+            print 'Angularls Language server attached'
+          end,
+        },
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -785,3 +800,8 @@ package.cpath = package.cpath .. ';' .. table.concat(luarocks_cpath, ';')
 vim.opt.runtimepath:append(vim.fs.joinpath(rocks_config.rocks_path, 'lib', 'luarocks', 'rocks-5.1', 'rocks.nvim', '*'))
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
+-- vimwiki settings
+vim.cmd 'filetype plugin on'
+vim.cmd 'syntax on'
+vim.o.compatible = false --prob not needed

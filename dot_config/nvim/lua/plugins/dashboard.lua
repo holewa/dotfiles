@@ -1,8 +1,14 @@
 local quoteGenerator = require 'plugins.random-quote-generator'
 
-local findVimWikis = function()
+local searchNotes = function()
   require('telescope.builtin').find_files { cwd = '~/vimwiki/' }
 end
+
+local searchInNotes = function()
+  require('telescope.builtin').live_grep { cwd = '~/vimwiki/' }
+end
+
+local open_project_picker = function() end
 
 -- Function to display a random quote in the footer
 local getRandomQuote = function()
@@ -18,41 +24,75 @@ return {
     require('dashboard').setup {
       theme = 'doom',
       config = {
-        -- header = require 'custom-headers.custom-header',
-        header = require 'custom-headers.garfield-header',
+        -- week_header = {
+        --   enable = true, --boolean use a week header
+        -- },
+        -- header = require 'custom.headers.custom-header',
+        header = require 'custom.headers.garfield-header',
         center = {
           {
             icon = ' ',
             icon_hl = 'Title',
             desc = 'Find File           ',
-            desc_hl = 'String',
             key = 'f',
-            keymap = 'SPC f f',
-            key_hl = 'Number',
-            key_format = ' %s', -- remove default surrounding `[]`
             action = 'Telescope find_files',
           },
           {
             icon = ' ',
-            desc = 'Find Dotfiles',
-            key = 'd',
-            keymap = 'SPC f d',
-            key_format = ' %s', -- remove default surrounding `[]`
-            action = 'lua print(3)',
+            icon_hl = 'Title',
+            desc = 'Search in Files using [g]rep          ',
+            key = 'g',
+            action = 'Telescope live_grep',
           },
           {
-            icon = ' ',
+            icon = ' ',
             icon_hl = 'Title',
-            desc = 'Find Notes           ',
+            desc = 'Open Project          ',
+            key = 'o',
+            action = open_project_picker,
+          },
+          {
+            icon = ' ',
+            icon_hl = 'Title',
+            desc = 'Open Vimwiki           ',
+            key = 'w',
+            action = 'VimwikiIndex',
+          },
+          -- {
+          --   icon = ' ',
+          --   icon_hl = 'Title',
+          --   desc = 'Search in Notes           ',
+          --   key = 'n',
+          --   action = searchInNotes,
+          -- },
+          -- {
+          --   icon = ' ',
+          --   desc = 'Manage Dotfiles',
+          --   key = 'd',
+          --   key_hl = 'Number',
+          --   action = 'lua print("Not implemented yet")',
+          -- },
+          {
+            icon = ' ',
+            desc = 'Toggle header/ransparency',
+            key = 't',
+            action = ': TransparentToggle',
+          },
+          {
+            desc = '󰊳 Update',
             desc_hl = 'String',
-            key = 'n',
-            keymap = 'SPC f f',
-            key_hl = 'Number',
-            key_format = ' %s', -- remove default surrounding `[]`
-            action = findVimWikis,
+            group = '@property',
+            action = 'Lazy update',
+            key = 'u',
           },
         },
+
         footer = {
+          ' ',
+          ' ',
+          ' ',
+          ' ',
+          ' ',
           getRandomQuote().content,
           '- ' .. getRandomQuote().author,
         },

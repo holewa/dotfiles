@@ -12,6 +12,9 @@ source ~/.aliases
 
 export EDITOR=nvim
 
+#icon fix
+export LANG=C.UTF-8
+
 # Path variables
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$PATH:/opt/nvim-linux64/bin"
