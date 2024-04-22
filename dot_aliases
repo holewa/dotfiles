@@ -55,12 +55,23 @@ alias tc='cd ~/af-projects/tajma-config/argocd_ocp4/'
 alias vc='cd ~/.config/nvim/'
 
 #Node
+alias ns='npm start'
 alias node='ts-node'
 
 #Open directory in vim
-alias vvc='cd ~/.config/nvim/ &&; v'
+alias vvc=';vc ; v'
 alias vtf='cd ~/af-projects/tajma-frontend &&; v'
 alias vtb='cd ~/af-projects/tajma-backend &&; v'
 alias vtc='cd ~/af-projects/tajma-config &&; v'
+#vimwiki.
+alias vvw='cd ~/vimwiki &&; v index.wiki'
 
+#edit settings.json for windows terminal
+alias vwts='cd /mnt/c/Users/hoaje/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState && v settings.json'
 
+#xclip
+alias xclip='xclip -sel clip'
+
+#browser
+alias edge="/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe"
+alias chrome="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
