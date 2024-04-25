@@ -1,0 +1,27 @@
+-- -- Function to check if a buffer is a dashboard or Lua file
+-- local function is_dashboard_or_lua()
+--     -- Check if the file type is dashboard
+--     if vim.bo.filetype == 'dashboard' then
+--         return true
+--     end
+--
+--     -- Check if the file extension is lua
+--     local extension = vim.fn.expand('%:e')
+--     if extension == 'lua' then
+--         return true
+--     end
+--
+--     return false
+-- end
+--
+-- -- Set custom font or font settings for dashboard and Lua files
+-- vim.cmd([[
+--     augroup CustomFont
+--         autocmd!
+--         autocmd BufEnter * if luaeval("is_dashboard_or_lua()") then
+--             setlocal guifont='Cascadia:h12' " Change to your preferred dashboard font and size
+--         else
+--             setlocal guifont='YourNormalFont:h12' " Change to your preferred normal font and size
+--         endif
+--     augroup END
+-- ]])

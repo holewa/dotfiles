@@ -16,6 +16,6 @@ return {
           'github:mason-org/mason-registry',
         },
       },
-    }
+    },
   },
 }

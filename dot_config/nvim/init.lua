@@ -10,9 +10,6 @@ vim.opt.rtp:prepend(lazypath)
 require 'vim-options'
 require 'keymaps'
 
---  To update plugins you can run
---    :Lazy update
--- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   --pluginz installed by me
   require 'plugins.neo-tree',
@@ -24,13 +21,16 @@ require('lazy').setup({
   require 'plugins.vim-tmux-navigator',
   require 'plugins.noice',
   require 'plugins.lualine',
+  -- require 'plugins.ftplugin.java',
   require 'plugins.nvim-java',
   require 'plugins.harpoon',
   require 'plugins.telescope-undo',
   require 'plugins.nvim-web-devicons',
-  -- require 'plugis.vimwiki',
+  -- require 'plugins.fugitive',
+  require 'plugins.vimwiki',
+  require 'plugins.lazygit',
   { 'nvim-treesitter/nvim-treesitter' },
-  { 'dlvandenberg/tree-sitter-angular' },
+  -- { 'dlvandenberg/tree-sitter-angular' },
   --require 'plugins.auto-save',
   -- require 'plugins.obsidian',
   -- NOTE: check out themes below with :colorscheme
@@ -41,6 +41,7 @@ require('lazy').setup({
     dependencies = { 'stevearc/overseer.nvim' },
     opts = {},
   },
+
   { -- The task runner we use
     'stevearc/overseer.nvim',
     commit = '68a2d344cea4a2e11acfb5690dc8ecd1a1ec0ce0',
@@ -204,8 +205,7 @@ require('lazy').setup({
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
-      -- it can fuzzy find! It's more than just a "file finder", it can search
-      -- many different aspects of Neovim, your workspace, LSP, and more!
+      -- it can fuzzy find!!
       --
       -- The easiest way to use Telescope, is to start by doing something like:
       --  :Telescope help_tags
@@ -409,6 +409,18 @@ require('lazy').setup({
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
+      local default_node_modules = vim.fn.getcwd() .. '/node_modules'
+
+      local ngls_cmd = {
+        'ngserver',
+        '--stdio',
+        '--tsProbeLocations',
+        default_node_modules,
+        '--ngProbeLocations',
+        default_node_modules,
+        '--experimental-ivy',
+      }
+
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       --
@@ -431,14 +443,21 @@ require('lazy').setup({
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
         angularls = {
-          filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'spec', 'scss' },
-          cmd = { 'ngserver.cmd', '--stdio' },
-          -- root_dir = lspconfig.util.root_pattern('tsconfig.json', 'jsconfig.json'),
-          on_attach = function()
-            -- Additional setup or customization when attaching the LSP client
-            print 'Angularls Language server attached'
+          -- filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'spec', 'scss' },
+          -- cmd = { 'ngserver.cmd', '--stdio' },
+          -- -- root_dir = lspconfig.util.root_pattern('tsconfig.json', 'jsconfig.json'),
+          -- on_attach = function()
+          --   -- Additional setup or customization when attaching the LSP client
+          --   print 'Angularls Language server attached'
+
+          cmd = ngls_cmd,
+          on_new_config = function(new_config)
+            new_config.cmd = ngls_cmd
           end,
+          on_attach = on_attach,
+          capabilities = capabilities,
         },
+
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -455,6 +474,7 @@ require('lazy').setup({
         },
       }
 
+      require('lspconfig').jdtls.setup {}
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
       --  other tools, you can run
@@ -625,7 +645,6 @@ require('lazy').setup({
           { name = 'path' },
           { name = 'codeium' },
           { name = 'angular' },
-          { name = 'java' },
         },
       }
     end,
@@ -707,6 +726,7 @@ require('lazy').setup({
         'typescript',
         'bash',
         'angular',
+        'java',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
@@ -777,31 +797,5 @@ require('lazy').setup({
 
 require 'vim-options'
 
---Rocks.nvim
-local rocks_config = {
-  rocks_path = vim.fn.stdpath 'data' .. '/rocks',
-  luarocks_binary = 'luarocks',
-}
-
-vim.g.rocks_nvim = rocks_config
-
-local luarocks_path = {
-  vim.fs.joinpath(rocks_config.rocks_path, 'share', 'lua', '5.1', '?.lua'),
-  vim.fs.joinpath(rocks_config.rocks_path, 'share', 'lua', '5.1', '?', 'init.lua'),
-}
-package.path = package.path .. ';' .. table.concat(luarocks_path, ';')
-
-local luarocks_cpath = {
-  vim.fs.joinpath(rocks_config.rocks_path, 'lib', 'lua', '5.1', '?.so'),
-  vim.fs.joinpath(rocks_config.rocks_path, 'lib64', 'lua', '5.1', '?.so'),
-}
-package.cpath = package.cpath .. ';' .. table.concat(luarocks_cpath, ';')
-
-vim.opt.runtimepath:append(vim.fs.joinpath(rocks_config.rocks_path, 'lib', 'luarocks', 'rocks-5.1', 'rocks.nvim', '*'))
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
---
--- vimwiki settings
-vim.cmd 'filetype plugin on'
-vim.cmd 'syntax on'
-vim.o.compatible = false --prob not needed

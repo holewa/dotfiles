@@ -8,8 +8,6 @@ local searchInNotes = function()
   require('telescope.builtin').live_grep { cwd = '~/vimwiki/' }
 end
 
-local open_project_picker = function() end
-
 -- Function to display a random quote in the footer
 local getRandomQuote = function()
   local randomQuote = quoteGenerator.fetchRandomQuote()
@@ -27,8 +25,8 @@ return {
         -- week_header = {
         --   enable = true, --boolean use a week header
         -- },
-        -- header = require 'custom.headers.custom-header',
-        header = require 'custom.headers.garfield-header',
+        header = require 'custom.headers.custom-header',
+        -- header = require 'custom.headers.garfield-header',
         center = {
           {
             icon = ' ',
@@ -40,41 +38,20 @@ return {
           {
             icon = ' ',
             icon_hl = 'Title',
-            desc = 'Search in Files using [g]rep          ',
+            desc = 'Search in Files          ',
             key = 'g',
             action = 'Telescope live_grep',
           },
           {
-            icon = ' ',
-            icon_hl = 'Title',
-            desc = 'Open Project          ',
-            key = 'o',
-            action = open_project_picker,
-          },
-          {
             icon = ' ',
             icon_hl = 'Title',
-            desc = 'Open Vimwiki           ',
+            desc = 'Search Vimwiki           ',
             key = 'w',
-            action = 'VimwikiIndex',
+            action = searchInNotes,
           },
-          -- {
-          --   icon = ' ',
-          --   icon_hl = 'Title',
-          --   desc = 'Search in Notes           ',
-          --   key = 'n',
-          --   action = searchInNotes,
-          -- },
-          -- {
-          --   icon = ' ',
-          --   desc = 'Manage Dotfiles',
-          --   key = 'd',
-          --   key_hl = 'Number',
-          --   action = 'lua print("Not implemented yet")',
-          -- },
           {
             icon = ' ',
-            desc = 'Toggle header/ransparency',
+            desc = 'Toggle transparency',
             key = 't',
             action = ': TransparentToggle',
           },
@@ -85,17 +62,11 @@ return {
             action = 'Lazy update',
             key = 'u',
           },
+          {
+            desc = 'Inspirational quote goes here',
+          },
         },
-
-        footer = {
-          ' ',
-          ' ',
-          ' ',
-          ' ',
-          ' ',
-          getRandomQuote().content,
-          '- ' .. getRandomQuote().author,
-        },
+        -- footer = require 'custom.headers.garfield-header',
       },
     }
   end,

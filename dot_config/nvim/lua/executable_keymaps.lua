@@ -6,6 +6,7 @@ vim.g.maplocalleader = ' '
 vim.keymap.set('v', 'p', '"_dP')
 vim.keymap.set('n', '<C-d', '<C-d>zz')
 vim.keymap.set('n', '<C-u', '<C-u>zz')
+vim.keymap.set('n', 'G', 'Gzz')
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
@@ -113,3 +114,22 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.keymap.set('n', '<leader>theme', ':colorscheme duskfox<cr>')
+
+-- Git fugitive
+-- local map = function(keys, func, desc)
+--   vim.keymap.set('n', '<leader>' .. keys, ':Git ' .. func .. '<CR>', { desc = '[G]it ' .. desc })
+-- end
+--
+-- map('gs', 'status', '[s]tatus')
+-- map('ga', 'add %', '[a]dd')
+-- map('gap', 'add -p', '[a]dd [p]repare')
+-- map('gc', 'commit', '[c]ommit')
+-- map('gp', 'push', '[p]ush')
+-- map('gl', 'pull', 'pu[l]l')
+-- map('gh', 'stash', 'stas[h]')
+
+-- Vimwiki in note window
+local spawn_note_window = require 'custom.spawn-note-window'
+vim.keymap.set('n', '<leader>wl', function()
+  spawn_note_window()
+end, { desc = 'Spawn Note Window' })
