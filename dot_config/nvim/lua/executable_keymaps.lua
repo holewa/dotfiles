@@ -133,3 +133,6 @@ local spawn_note_window = require 'custom.spawn-note-window'
 vim.keymap.set('n', '<leader>wl', function()
   spawn_note_window()
 end, { desc = 'Spawn Note Window' })
+
+--Save and execute a file
+vim.keymap.set('n', '<leader><leader>x', ':source %<CR>')

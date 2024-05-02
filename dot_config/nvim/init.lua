@@ -7,6 +7,9 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+-- Set cmdheight to 1
+vim.cmd 'set cmdheight=10'
+
 require 'vim-options'
 require 'keymaps'
 
@@ -22,7 +25,7 @@ require('lazy').setup({
   require 'plugins.noice',
   require 'plugins.lualine',
   -- require 'plugins.ftplugin.java',
-  require 'plugins.nvim-java',
+  -- require 'plugins.nvim-java',
   require 'plugins.harpoon',
   require 'plugins.telescope-undo',
   require 'plugins.nvim-web-devicons',
@@ -30,10 +33,8 @@ require('lazy').setup({
   require 'plugins.vimwiki',
   require 'plugins.lazygit',
   { 'nvim-treesitter/nvim-treesitter' },
-  -- { 'dlvandenberg/tree-sitter-angular' },
   --require 'plugins.auto-save',
   -- require 'plugins.obsidian',
-  -- NOTE: check out themes below with :colorscheme
   { 'xiyaowong/transparent.nvim' },
   { -- This plugin
     'Zeioth/compiler.nvim',
@@ -82,22 +83,10 @@ require('lazy').setup({
 
           -- Angular
           if is_angular then
-            vim.keymap.set('n', '<leader>oh', find '.component.html', { desc = 'html-file' })
-            vim.keymap.set('n', '<leader>ot', find '.component.ts', { desc = 'ts-file' })
-            vim.keymap.set('n', '<leader>oc', find '.component.scss', { desc = 'css-file' })
+            vim.keymap.set('n', '<leader>ah', find '.component.html', { desc = 'html-file' })
+            vim.keymap.set('n', '<leader>at', find '.component.ts', { desc = 'ts-file' })
+            vim.keymap.set('n', '<leader>ac', find '.component.scss', { desc = 'css-file' })
           end
-
-          -- vim.filetype.add {
-          --   pattern = {
-          --     ['.*%.component%.html'] = 'angular.html', -- Sets the filetype to `angular.html` if it matches the pattern
-          --   },
-          -- }
-          -- vim.api.nvim_create_autocmd('FileType', {
-          --   pattern = 'angular.html',
-          --   callback = function()
-          --     vim.treesitter.language.register('angular', 'angular.html') -- Register the filetype with treesitter for the `angular` language/parser
-          --   end,
-          -- })
         end,
       })
     end,
@@ -182,7 +171,7 @@ require('lazy').setup({
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
-    branch = '0.1.x',
+    branch = 'master',
     dependencies = {
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -347,7 +336,10 @@ require('lazy').setup({
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
           -- Find references for the word under your cursor.
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          local function goto_references()
+            require('telescope.builtin').lsp_references { include_declaration = false }
+          end
+          map('gr', goto_references, '[G]oto [R]eferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
@@ -431,8 +423,6 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -443,13 +433,6 @@ require('lazy').setup({
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
         angularls = {
-          -- filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'spec', 'scss' },
-          -- cmd = { 'ngserver.cmd', '--stdio' },
-          -- -- root_dir = lspconfig.util.root_pattern('tsconfig.json', 'jsconfig.json'),
-          -- on_attach = function()
-          --   -- Additional setup or customization when attaching the LSP client
-          --   print 'Angularls Language server attached'
-
           cmd = ngls_cmd,
           on_new_config = function(new_config)
             new_config.cmd = ngls_cmd
@@ -475,12 +458,7 @@ require('lazy').setup({
       }
 
       require('lspconfig').jdtls.setup {}
-      -- Ensure the servers and tools above are installed
-      --  To check the current status of installed tools and/or manually install
-      --  other tools, you can run
-      --    :Mason
-      --
-      --  You can press `g?` for help in this menu.
+
       require('mason').setup()
 
       -- You can add other tools here that you want Mason to install
@@ -658,10 +636,7 @@ require('lazy').setup({
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'tokyonight-moon'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'

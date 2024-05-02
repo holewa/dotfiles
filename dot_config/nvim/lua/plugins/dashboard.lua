@@ -22,10 +22,11 @@ return {
     require('dashboard').setup {
       theme = 'doom',
       config = {
-        -- week_header = {
-        --   enable = true, --boolean use a week header
-        -- },
-        header = require 'custom.headers.custom-header',
+        week_header = {
+          enable = true, --boolean use a week header
+          append = require 'custom.headers.custom-header',
+        },
+        -- header = require 'custom.headers.custom-header',
         -- header = require 'custom.headers.garfield-header',
         center = {
           {
@@ -57,16 +58,15 @@ return {
           },
           {
             desc = '󰊳 Update',
-            desc_hl = 'String',
             group = '@property',
             action = 'Lazy update',
             key = 'u',
           },
           {
             desc = 'Inspirational quote goes here',
+            desc_hl = 'String',
           },
         },
-        -- footer = require 'custom.headers.garfield-header',
       },
     }
   end,

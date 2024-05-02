@@ -6,8 +6,8 @@ return {
     require('lualine').setup {
       options = {
         fmt = string.lower,
-        theme = 'dracula', --dracula
-        icons_enabled = false,
+        theme = 'tokyonight', --dracula
+        icons_enabled = true,
         component_separators = '|',
         section_separators = '',
       },
@@ -21,7 +21,7 @@ return {
           },
         },
         lualine_x = {
-          'branch',
+          -- 'branch',
           --'diff',
           --'diagnostics'
         },
