@@ -14,8 +14,11 @@ alias vi='echo vi is old shit, just use v'
 
 #Git aliases
 alias gs='git status'
-#Git combo which will ask for commit, otherwise do it all
-alias gacp='git add . && git commit -e && if [ $? -eq 0 ]; then git push; fi'
+# Git combo which will ask for commit, otherwise do it all
+# alias gacp='git add . && git commit -e && if [ $? -eq 0 ]; then git push; fi'
+
+# Lazygit
+alias lg='lazygit'
 
 #Copypath
 alias copa='copypath'
@@ -59,12 +62,12 @@ alias ns='npm start'
 alias node='ts-node'
 
 #Open directory in vim
-alias vvc=';vc ; v'
-alias vtf='cd ~/af-projects/tajma-frontend &&; v'
-alias vtb='cd ~/af-projects/tajma-backend &&; v'
-alias vtc='cd ~/af-projects/tajma-config &&; v'
+alias vcv=';vc ; v'
+alias tfv='cd ~/af-projects/tajma-frontend &&; v'
+alias tbv='cd ~/af-projects/tajma-backend &&; v'
+alias tcv='cd ~/af-projects/tajma-config &&; v'
 #vimwiki.
-alias vvw='cd ~/vimwiki &&; v index.wiki'
+alias vwv='cd ~/vimwiki &&; v index.wiki'
 
 #edit settings.json for windows terminal
 alias vwts='cd /mnt/c/Users/hoaje/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState && v settings.json'
@@ -73,5 +76,9 @@ alias vwts='cd /mnt/c/Users/hoaje/AppData/Local/Packages/Microsoft.WindowsTermin
 alias xclip='xclip -sel clip'
 
 #browser
-alias edge="/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe"
-alias chrome="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
+alias edge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe'
+alias chrome='/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe'
+
+#Running Tajma
+alias tajba='cd ~/af-projects/tajma-backend && mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=dev"'
+alias tajfro='cd ~/af-projects/tajma-frontend &&; ns' 
