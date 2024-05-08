@@ -6,7 +6,7 @@ return {
     require('lualine').setup {
       options = {
         fmt = string.lower,
-        theme = 'tokyonight', --dracula
+        theme = 'tokyonight',
         icons_enabled = true,
         component_separators = '|',
         section_separators = '',

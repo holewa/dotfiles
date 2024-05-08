@@ -29,7 +29,7 @@ require('lazy').setup({
   require 'plugins.harpoon',
   require 'plugins.telescope-undo',
   require 'plugins.nvim-web-devicons',
-  -- require 'plugins.fugitive',
+  require 'plugins.fugitive',
   require 'plugins.vimwiki',
   require 'plugins.lazygit',
   { 'nvim-treesitter/nvim-treesitter' },
@@ -637,10 +637,13 @@ require('lazy').setup({
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       vim.cmd.colorscheme 'tokyonight-moon'
-
+      vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#51B3EC', bold = true })
+      vim.api.nvim_set_hl(0, 'LineNr', { fg = '#ec51b3', bold = true })
+      vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#57c6d9', bold = true })
       -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
+      -- vim.cmd.hi 'Comment gui=none'
     end,
+    -- Sets colors to line numbers Above, Current and Below  in this order
   },
 
   -- Highlight todo, notes, etc in comments

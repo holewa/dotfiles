@@ -113,21 +113,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.keymap.set('n', '<leader>theme', ':colorscheme duskfox<cr>')
-
--- Git fugitive
--- local map = function(keys, func, desc)
---   vim.keymap.set('n', '<leader>' .. keys, ':Git ' .. func .. '<CR>', { desc = '[G]it ' .. desc })
--- end
---
--- map('gs', 'status', '[s]tatus')
--- map('ga', 'add %', '[a]dd')
--- map('gap', 'add -p', '[a]dd [p]repare')
--- map('gc', 'commit', '[c]ommit')
--- map('gp', 'push', '[p]ush')
--- map('gl', 'pull', 'pu[l]l')
--- map('gh', 'stash', 'stas[h]')
-
 -- Vimwiki in note window
 local spawn_note_window = require 'custom.spawn-note-window'
 vim.keymap.set('n', '<leader>wl', function()
@@ -135,4 +120,23 @@ vim.keymap.set('n', '<leader>wl', function()
 end, { desc = 'Spawn Note Window' })
 
 --Save and execute a file
-vim.keymap.set('n', '<leader><leader>x', ':source %<CR>')
+vim.keymap.set('n', '<C-x>', ':source %<CR>')
+
+--Go back/close current window
+vim.keymap.set('n', '<C-q>', ':q<CR>')
+
+--Toggle transparent background
+vim.keymap.set('n', '<C-t>', ':silent! TransparentToggle<CR>')
+
+-- Toggle Git blame using vim fugitive
+local ToggleBlame = function()
+  if vim.bo.filetype == 'fugitiveblame' then
+    vim.cmd 'close'
+  else
+    vim.cmd 'G blame'
+  end
+end
+
+vim.keymap.set('n', '<leader>gb', function()
+  ToggleBlame()
+end, { desc = 'Git [b]lame' })
