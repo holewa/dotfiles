@@ -24,7 +24,7 @@ return {
       config = {
         week_header = {
           enable = true, --boolean use a week header
-          append = require 'custom.headers.custom-header',
+          -- append = require 'custom.headers.custom-header',
         },
         -- header = require 'custom.headers.custom-header',
         -- header = require 'custom.headers.garfield-header',
