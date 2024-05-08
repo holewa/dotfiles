@@ -51,12 +51,6 @@ return {
             action = searchInNotes,
           },
           {
-            icon = ' ',
-            desc = 'Toggle transparency',
-            key = 't',
-            action = ': TransparentToggle',
-          },
-          {
             desc = '󰊳 Update',
             group = '@property',
             action = 'Lazy update',
