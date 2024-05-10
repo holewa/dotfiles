@@ -10,7 +10,9 @@ vim.opt.rtp:prepend(lazypath)
 -- Set cmdheight to 1
 vim.cmd 'set cmdheight=10'
 
-require 'vim-options'
+vim.g.python3_host_prog = '/usr/bin/python3'
+
+-- require 'vim-options'
 require 'keymaps'
 
 require('lazy').setup({

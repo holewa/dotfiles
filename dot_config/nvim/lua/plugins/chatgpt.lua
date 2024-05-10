@@ -9,7 +9,7 @@ return {
   },
   config = function()
     require('chatgpt').setup {
-      api_key_cmd = 'pass show chatgpt',
+      api_key_cmd = 'pass show personal/chatgpt',
     }
   end,
 }

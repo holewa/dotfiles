@@ -1,6 +1,6 @@
 #!/bin/bash
-
-# sudo apt update
+# C02BD55869A3F052024E81935879C5E4FE180498
+sudo apt update
 
 install_if_not_installed() {
     local package_name="$1"
@@ -43,3 +43,6 @@ install_if_not_installed "command -v pip &> /dev/null" "sudo apt install python3
 rm get-pip.py
 echo "Upgrading pip to the latest version..."
 sudo pip install --upgrade pip
+
+npm install -g neovim
+sudo apt-get install tree-sitter-cli
