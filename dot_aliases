@@ -3,13 +3,14 @@
 #linux commands
 alias cl='clear'
 alias cls='clear && ls'
+alias ls='ls -a'
 
 #aliases-file
 alias va='nvim ~/.aliases'
 alias sa='source ~/.aliases'
 
 #nvim
-alias v='pass show chatgpt && nvim'
+alias v='pass show personal/chatgpt && nvim'
 alias vi='echo vi is old shit, just use v'
 
 #Git aliases
