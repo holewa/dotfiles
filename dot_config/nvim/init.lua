@@ -26,8 +26,6 @@ require('lazy').setup({
   require 'plugins.vim-tmux-navigator',
   require 'plugins.noice',
   require 'plugins.lualine',
-  -- require 'plugins.ftplugin.java',
-  -- require 'plugins.nvim-java',
   require 'plugins.harpoon',
   require 'plugins.telescope-undo',
   require 'plugins.nvim-web-devicons',
@@ -461,6 +459,13 @@ require('lazy').setup({
 
       require('lspconfig').jdtls.setup {}
 
+      require('lspconfig').powershell_es.setup {
+        bundle_path = vim.fn.stdpath 'data' .. '/mason/packages/powershell-editor-services/',
+      }
+
+      require('lspconfig').bashls.setup {}
+      require('lspconfig').sonarlint.setup {}
+
       require('mason').setup()
 
       -- You can add other tools here that you want Mason to install
@@ -641,6 +646,10 @@ require('lazy').setup({
       vim.cmd.colorscheme 'tokyonight-moon'
       vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#96D1F3', bold = true })
       vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#96A3F3', bold = true })
+
+      vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE', ctermbg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'NeoTreeNormal', { bg = 'NONE', ctermbg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'NeoTreeNormalNC', { bg = 'NONE', ctermbg = 'NONE' })
       -- You can configure highlights by doing something like:
       -- vim.cmd.hi 'Comment gui=none'
     end,

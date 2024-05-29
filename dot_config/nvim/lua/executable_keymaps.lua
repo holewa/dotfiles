@@ -127,6 +127,15 @@ vim.keymap.set('n', '<C-q>', ':q<CR>')
 
 --Toggle transparent background
 vim.keymap.set('n', '<C-t>', ':silent! TransparentToggle<CR>')
+vim.keymap.set('n', '<C-t>', 'ToggleTransparency()')
+
+local ToggleTransparency = function()
+  print 'heej'
+  vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE', ctermbg = 'NONE' })
+  vim.api.nvim_set_hl(0, 'NeoTreeNormal', { bg = 'NONE', ctermbg = 'NONE' })
+  vim.api.nvim_set_hl(0, 'NeoTreeNormalNC', { bg = 'NONE', ctermbg = 'NONE' })
+  -- etc...
+end
 
 -- Toggle Git blame using vim fugitive
 local ToggleBlame = function()
@@ -140,3 +149,6 @@ end
 vim.keymap.set('n', '<leader>gb', function()
   ToggleBlame()
 end, { desc = 'Git [b]lame' })
+
+-- yank everything in current file
+vim.keymap.set('n', '<leader>ya', 'ggVGy', { desc = '[y]ank [a]ll' })

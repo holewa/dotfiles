@@ -21,6 +21,7 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:$HOME/bin"
 export TMUX_CONFIG="$HOME/.tmux.conf"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/share/maven/bin:$PATH"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 # Set name of the theme to load --- if set to "random", it will
