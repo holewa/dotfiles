@@ -10,7 +10,9 @@ alias va='nvim ~/.aliases'
 alias sa='source ~/.aliases'
 
 #nvim
-alias v='pass show personal/chatgpt && nvim'
+# not using chatgpt atm
+# alias v='pass show personal/chatgpt && nvim'
+alias v='nvim'
 alias vi='echo vi is old shit, just use v'
 
 #Git aliases

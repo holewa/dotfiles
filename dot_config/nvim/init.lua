@@ -22,7 +22,7 @@ require('lazy').setup({
   require 'plugins.comment',
   require 'plugins.dashboard',
   require 'plugins.fine-cmdline',
-  require 'plugins.chatgpt',
+  -- require 'plugins.chatgpt',
   require 'plugins.vim-tmux-navigator',
   require 'plugins.noice',
   require 'plugins.lualine',
@@ -32,10 +32,11 @@ require('lazy').setup({
   require 'plugins.fugitive',
   require 'plugins.vimwiki',
   require 'plugins.lazygit',
+  { 'mfussenegger/nvim-jdtls' },
   { 'nvim-treesitter/nvim-treesitter' },
   --require 'plugins.auto-save',
   -- require 'plugins.obsidian',
-  { 'xiyaowong/transparent.nvim' },
+  -- { 'xiyaowong/transparent.nvim' },
   { -- This plugin
     'Zeioth/compiler.nvim',
     cmd = { 'CompilerOpen', 'CompilerToggleResults', 'CompilerRedo' },
@@ -456,8 +457,6 @@ require('lazy').setup({
           },
         },
       }
-
-      require('lspconfig').jdtls.setup {}
 
       require('lspconfig').powershell_es.setup {
         bundle_path = vim.fn.stdpath 'data' .. '/mason/packages/powershell-editor-services/',

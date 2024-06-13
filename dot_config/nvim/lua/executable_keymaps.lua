@@ -127,7 +127,6 @@ vim.keymap.set('n', '<C-q>', ':q<CR>')
 
 --Toggle transparent background
 vim.keymap.set('n', '<C-t>', ':silent! TransparentToggle<CR>')
-vim.keymap.set('n', '<C-t>', 'ToggleTransparency()')
 
 local ToggleTransparency = function()
   print 'heej'
