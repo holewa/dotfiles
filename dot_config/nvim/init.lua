@@ -9,11 +9,17 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Set cmdheight to 1
 vim.cmd 'set cmdheight=10'
+vim.g.vimwiki_folding = 'list'
 
 vim.g.python3_host_prog = '/usr/bin/python3'
+-- Disable vi compatibility mode (equivalent to 'set nocompatible')
+vim.o.compatible = false
 
 -- require 'vim-options'
 require 'keymaps'
+
+-- Example: Set a key mapping to manually trigger VimwikiProgressUpdate
+vim.api.nvim_set_keymap('n', '<Leader>vp', ':VimwikiProgressUpdate<CR>', { noremap = true, silent = true })
 
 require('lazy').setup({
   --pluginz installed by me
@@ -31,6 +37,17 @@ require('lazy').setup({
   require 'plugins.nvim-web-devicons',
   require 'plugins.fugitive',
   require 'plugins.vimwiki',
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+    config = function()
+      require('flutter-tools').setup {}
+    end,
+  },
   require 'plugins.lazygit',
   { 'mfussenegger/nvim-jdtls' },
   { 'nvim-treesitter/nvim-treesitter' },
@@ -110,7 +127,7 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',    opts = {} },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -145,7 +162,7 @@ require('lazy').setup({
   -- after the plugin has been loaded:
   --  config = function() ... end
 
-  { -- Useful plugin to show you pending keybinds.
+  {                     -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
@@ -158,6 +175,8 @@ require('lazy').setup({
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+        ['<leader>f'] = { name = '[F]lutter', _ = 'which_key_ignore' },
+        ['<leader>fl'] = { name = '[Lsp]...', _ = 'which_key_ignore' },
       }
     end,
   },
@@ -191,7 +210,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -283,7 +302,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      -- { 'j-hui/fidget.nvim', opts = {} },
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
@@ -463,8 +482,18 @@ require('lazy').setup({
       }
 
       require('lspconfig').bashls.setup {}
-      require('lspconfig').sonarlint.setup {}
+      local lspconfig = require('lspconfig')
 
+      lspconfig.sonarlint.setup {
+        cmd = { "sonarlint-language-server", "-stdio" },
+        filetypes = { "javascript", "typescript", "python", "java" },
+        root_dir = function(fname)
+          return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
+        end,
+        settings = {
+          -- Add any specific settings for SonarLint here
+        },
+      }
       require('mason').setup()
 
       -- You can add other tools here that you want Mason to install
@@ -495,7 +524,7 @@ require('lazy').setup({
     lazy = false,
     keys = {
       {
-        '<leader>f',
+        '<C-f>',
         function()
           require('conform').format { async = true, lsp_fallback = true }
         end,
@@ -679,17 +708,17 @@ require('lazy').setup({
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
-      local statusline = require 'mini.statusline'
-      -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
-
-      -- You can configure sections in the statusline by overriding their
-      -- default behavior. For example, here we set the section for
-      -- cursor location to LINE:COLUMN
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
+      -- local statusline = require 'mini.statusline'
+      -- -- set use_icons to true if you have a Nerd Font
+      -- statusline.setup { use_icons = vim.g.have_nerd_font }
+      --
+      -- -- You can configure sections in the statusline by overriding their
+      -- -- default behavior. For example, here we set the section for
+      -- -- cursor location to LINE:COLUMN
+      -- ---@diagnostic disable-next-line: duplicate-set-field
+      -- statusline.section_location = function()
+      --   return '%2l:%-2v'
+      -- end
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim

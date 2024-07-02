@@ -93,7 +93,7 @@ local config = {
 
 config['on_attach'] = function(client, bufnr)
   require('jdtls').setup_dap { hotcodereplace = 'auto' }
-  require('keymaps').map_java_keys(bufnr)
+  -- require('keymaps').map_java_keys(bufnr)
 end
 
 jdtls.start_or_attach(config)

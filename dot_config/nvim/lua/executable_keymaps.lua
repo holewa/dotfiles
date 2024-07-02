@@ -32,14 +32,13 @@ vim.keymap.set({ 'n', 'v' }, '<leader>p', [["+p]])
 vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
 
 --Replace word with last yanked word
-vim.keymap.set('n', 'cr', 'viwp')
+vim.keymap.set('n', '<leader>ry', '"_viwp', { desc = '[R]eplace with [y]anked word' })
 
 -- This is going to get me cancelled
 vim.keymap.set('i', '<C-c>', '<Esc>')
 
 vim.keymap.set('n', 'Q', '<nop>')
-vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
-vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)
+vim.keymap.set('n', '<C-f>', vim.lsp.buf.format)
 
 --unbinding cuz ov vim navigation between windows
 --vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
@@ -86,7 +85,7 @@ vim.keymap.set('n', '<leader>icn', "oconsole.log('')<ESC>hi")
 vim.keymap.set('n', '<Leader>.', ': %!dos2unix<CR>')
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<Esc>', ':noh<CR><CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -119,9 +118,6 @@ vim.keymap.set('n', '<leader>wl', function()
   spawn_note_window()
 end, { desc = 'Spawn Note Window' })
 
---Save and execute a file
-vim.keymap.set('n', '<C-x>', ':source %<CR>')
-
 --Go back/close current window
 vim.keymap.set('n', '<C-q>', ':q<CR>')
 
@@ -151,3 +147,8 @@ end, { desc = 'Git [b]lame' })
 
 -- yank everything in current file
 vim.keymap.set('n', '<leader>ya', 'ggVGy', { desc = '[y]ank [a]ll' })
+
+--Flutter keybinds
+vim.keymap.set('n', '<leader>fr', ':FlutterRun<CR>', { desc = '[F]lutter [R]un' })
+vim.keymap.set('n', '<leader>fq', ':FlutterQuit<CR>', { desc = '[F]lutter [Q]uit' })
+vim.keymap.set('n', '<leader>flr', ':FlutterLspRestart<CR>', { desc = '[F]lutter [L]sp [R]estart' })
