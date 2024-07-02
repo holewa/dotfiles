@@ -54,15 +54,17 @@ alias tma='tmuxAttach'
 alias tm='tmuxNewSession'
 alias tml='tmux ls'
 
+alias tmx='tmuxifier'
+
 #cd directly to specicif directorys
 alias tf='cd ~/af-projects/tajma-frontend/'
 alias tb='cd ~/af-projects/tajma-backend/'
-alias tc='cd ~/af-projects/tajma-config/argocd_ocp4/'
+alias tc='cd ~/af-projects/tajma-config/'
 alias vc='cd ~/.config/nvim/'
 
 #Node
 alias ns='npm start'
-alias node='ts-node'
+# alias node='ts-node'
 
 #Open directory in vim
 alias vcv=';vc ; v'

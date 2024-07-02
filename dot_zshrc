@@ -22,6 +22,14 @@ export PATH="$PATH:$HOME/bin"
 export TMUX_CONFIG="$HOME/.tmux.conf"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/share/maven/bin:$PATH"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+export PATH="$HOME/.sdkman/candidates/java/current/bin:$PATH"
+export ANDROID_SDK_ROOT=/home/hoaje/Android/Sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools
+
+export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
+eval "$(tmuxifier init -)"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 # Set name of the theme to load --- if set to "random", it will
@@ -128,10 +136,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Some other program adding to the PATH:
+export PATH="$ANT_ROOT:$PATH"
+
+# NVM initialisation
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+export PATH="$PATH:$HOME/flutter/bin"
+export PATH=$PATH:/opt/android-studio/bin
+export PATH=$PATH:/opt/android-studio/bin
