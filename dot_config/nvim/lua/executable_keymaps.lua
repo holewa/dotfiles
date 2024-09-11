@@ -40,10 +40,6 @@ vim.keymap.set('i', '<C-c>', '<Esc>')
 vim.keymap.set('n', 'Q', '<nop>')
 vim.keymap.set('n', '<C-f>', vim.lsp.buf.format)
 
---unbinding cuz ov vim navigation between windows
---vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
---vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-
 vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
 vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
 
@@ -53,6 +49,7 @@ vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
 
 --toggle auto-save
 --vim.api.nvim_set_keymap('n', '<C-s>', ':ASToggle<CR>', {})
+
 vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', {})
 
 --ChatGPT
@@ -151,4 +148,5 @@ vim.keymap.set('n', '<leader>ya', 'ggVGy', { desc = '[y]ank [a]ll' })
 --Flutter keybinds
 vim.keymap.set('n', '<leader>fr', ':FlutterRun<CR>', { desc = '[F]lutter [R]un' })
 vim.keymap.set('n', '<leader>fq', ':FlutterQuit<CR>', { desc = '[F]lutter [Q]uit' })
+vim.keymap.set('n', '<leader>fb', ':FlutterRestart<CR>', { desc = '[F]lutter Re[b]oot' })
 vim.keymap.set('n', '<leader>flr', ':FlutterLspRestart<CR>', { desc = '[F]lutter [L]sp [R]estart' })

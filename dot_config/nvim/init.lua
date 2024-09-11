@@ -7,6 +7,9 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+-- Set default device ID for flutter-tools
+-- vim.g.flutter_tools_device_id = 'device_id_here'
+
 -- Set cmdheight to 1
 vim.cmd 'set cmdheight=10'
 vim.g.vimwiki_folding = 'list'
@@ -37,6 +40,8 @@ require('lazy').setup({
   require 'plugins.nvim-web-devicons',
   require 'plugins.fugitive',
   require 'plugins.vimwiki',
+  -- TODO: autoformat when format is working
+  -- require 'plugins.conform',
   {
     'akinsho/flutter-tools.nvim',
     lazy = false,
@@ -50,6 +55,8 @@ require('lazy').setup({
   },
   require 'plugins.lazygit',
   { 'mfussenegger/nvim-jdtls' },
+  -- require 'plugins.java.init',
+  -- {'nvim-java/nvim-java'},
   { 'nvim-treesitter/nvim-treesitter' },
   --require 'plugins.auto-save',
   -- require 'plugins.obsidian',
@@ -81,9 +88,9 @@ require('lazy').setup({
       'nvim-lua/plenary.nvim',
       'hrsh7th/nvim-cmp',
     },
-    config = function()
-      require('codeium').setup {}
-    end,
+    -- config = function()
+    --   require('codeium').setup {}
+    -- end,
   },
 
   {
@@ -400,6 +407,7 @@ require('lazy').setup({
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
           local client = vim.lsp.get_client_by_id(event.data.client_id)
+
           if client and client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
@@ -451,7 +459,7 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {},
+        -- tsserver = {},
         angularls = {
           cmd = ngls_cmd,
           on_new_config = function(new_config)
@@ -500,6 +508,7 @@ require('lazy').setup({
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+        'typescript-language-server',
         'stylua', -- Used to format Lua code
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -519,43 +528,21 @@ require('lazy').setup({
     end,
   },
 
-  { -- Autoformat
-    'stevearc/conform.nvim',
-    lazy = false,
-    keys = {
-      {
-        '<C-f>',
-        function()
-          require('conform').format { async = true, lsp_fallback = true }
-        end,
-        mode = '',
-        desc = '[F]ormat buffer',
-      },
-    },
-    opts = {
-      notify_on_error = false,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        return {
-          timeout_ms = 500,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-        }
-      end,
-      formatters_by_ft = {
-        lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
-      },
-    },
-  },
 
+  -- {
+  --   'stevearc/conform.nvim',
+  --   opts = function ()
+  --     require("conform").setup({
+  --       formatters_by_ft = {
+  --         lua = { "stylua" },
+  --         -- Conform will run multiple formatters sequentially
+  --         python = { "isort", "black" },
+  --         -- Use a sub-list to run only the first available formatter
+  --         javascript = { { "prettierd", "prettier" } },
+  --       },
+  --     })
+  --   end
+  -- },
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -760,6 +747,11 @@ require('lazy').setup({
 
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup(opts)
+      -- ensure_installed = { 'bash', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'java' },
+      -- auto_install = true,
+      -- highlight = { enable = true },
+      -- indent = { enable = true },
+      -- }
 
       -- There are additional nvim-treesitter modules that you can use to interact
       -- with nvim-treesitter. You should go explore a few and see what interests you:
@@ -768,6 +760,7 @@ require('lazy').setup({
       --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
+
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the

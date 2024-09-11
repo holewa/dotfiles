@@ -87,3 +87,9 @@ alias chrome='/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe'
 #Running Tajma
 alias tajba='cd ~/af-projects/tajma-backend && mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=dev"'
 alias tajfro='cd ~/af-projects/tajma-frontend &&; ns' 
+
+#mvn
+alias mci='mvn clean install'
+alias mcist='mvn clean install -DskipTests'
+alias msr='mvn spring-boot:run'
+alias pe='printenv'

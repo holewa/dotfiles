@@ -1,13 +1,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
---vim.g.have_nerd_font = false
 
--- vim.cmd 'set expandtab'
--- vim.cmd 'set tabstop=2'
--- vim.cmd 'set softtabstop=2'
--- vim.cmd 'set shiftwidth=2'
---
 -- [[ Setting options ]]
 --
 -- Preview substitutions live, as you type!

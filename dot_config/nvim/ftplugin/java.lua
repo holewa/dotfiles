@@ -4,7 +4,7 @@ local home = os.getenv 'HOME'
 local jdtls_dir = vim.fn.stdpath 'data' .. '/mason/packages/jdtls'
 local config_dir = jdtls_dir .. '/config_linux'
 local plugins_dir = jdtls_dir .. '/plugins'
-local lombok_path = plugins_dir .. '/lombok.jar'
+local lombok_path = jdtls_dir .. '/lombok.jar'
 
 local root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' }
 local root_dir = require('jdtls.setup').find_root(root_markers)
@@ -31,7 +31,7 @@ local config = {
     '--add-opens',
     'java.base/java.lang=ALL-UNNAMED',
     '-jar',
-    plugins_dir .. '/org.eclipse.equinox.launcher_1.6.800.v20240330-1250.jar', -- Ensure this matches the jar in your plugins directory
+    plugins_dir .. '/ecj-4.28.jar', -- Ensure this matches the jar in your plugins directory
     '-configuration',
     config_dir,
     '-data',
