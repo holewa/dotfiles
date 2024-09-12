@@ -4,7 +4,7 @@ local home = os.getenv 'HOME'
 local jdtls_dir = vim.fn.stdpath 'data' .. '/mason/packages/jdtls'
 local config_dir = jdtls_dir .. '/config_linux'
 local plugins_dir = jdtls_dir .. '/plugins'
-local lombok_path = jdtls_dir .. '/lombok.jar'
+local lombok_jar = '/home/hoaje/.local/share/nvim/mason/packages/jdtls/lombok.jar'
 
 local root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' }
 local root_dir = require('jdtls.setup').find_root(root_markers)
@@ -15,30 +15,35 @@ end
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = vim.fn.stdpath 'data' .. '/site/java/workspace-root/' .. project_name
 
+local status, jdtls = pcall(require, 'jdtls')
+if not status then
+  return
+end
+local extendedClientCapabilities = jdtls.extendedClientCapabilities
+
 -- Main config
 local config = {
-  cmd = {
-    home .. '/.sdkman/candidates/java/current/bin/java',
+ cmd = {
+    'java',
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
     '-Dlog.protocol=true',
     '-Dlog.level=ALL',
-    '-Xms1g',
+    '-Xmx1g',
     '--add-modules=ALL-SYSTEM',
     '--add-opens',
     'java.base/java.util=ALL-UNNAMED',
     '--add-opens',
     'java.base/java.lang=ALL-UNNAMED',
+    '-javaagent:' .. home .. '/.local/share/nvim/mason/packages/jdtls/lombok.jar',
     '-jar',
-    plugins_dir .. '/ecj-4.28.jar', -- Ensure this matches the jar in your plugins directory
+    vim.fn.glob(home .. '/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
     '-configuration',
-    config_dir,
+    home .. '/.local/share/nvim/mason/packages/jdtls/config_linux',
     '-data',
     workspace_dir,
-    '-javaagent:' .. lombok_path,
   },
-
   root_dir = root_dir,
 
   settings = {
@@ -86,7 +91,7 @@ local config = {
   },
   init_options = {
     bundles = {
-      lombok_path, -- Include Lombok path here
+      lombok_jar, -- Include Lombok path here
     },
   },
 }
