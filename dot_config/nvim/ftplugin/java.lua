@@ -38,7 +38,7 @@ local config = {
     'java.base/java.lang=ALL-UNNAMED',
     '-javaagent:' .. home .. '/.local/share/nvim/mason/packages/jdtls/lombok.jar',
     '-jar',
-    vim.fn.glob(home .. '/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
+    vim.fn.glob(home .. '/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher.gtk.linux.aarch64_1.2.1100.v20240722-2106.jar'),
     '-configuration',
     home .. '/.local/share/nvim/mason/packages/jdtls/config_linux',
     '-data',
