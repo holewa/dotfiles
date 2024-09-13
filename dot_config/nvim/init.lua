@@ -40,6 +40,7 @@ require('lazy').setup({
   require 'plugins.nvim-web-devicons',
   require 'plugins.fugitive',
   require 'plugins.vimwiki',
+  require 'plugins.nvim-jdtls',
   -- TODO: autoformat when format is working
   -- require 'plugins.conform',
   {
@@ -54,7 +55,7 @@ require('lazy').setup({
     end,
   },
   require 'plugins.lazygit',
-  { 'mfussenegger/nvim-jdtls' },
+  -- { 'mfussenegger/nvim-jdtls' },
   -- require 'plugins.java.init',
   -- {'nvim-java/nvim-java'},
   { 'nvim-treesitter/nvim-treesitter' },
@@ -134,7 +135,7 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',    opts = {} },
+  { 'numToStr/Comment.nvim',          opts = {} },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -494,7 +495,10 @@ require('lazy').setup({
 
       lspconfig.sonarlint.setup {
         cmd = { "sonarlint-language-server", "-stdio" },
-        filetypes = { "javascript", "typescript", "python", "java" },
+        filetypes = { "javascript",
+          "typescript",
+          "python",
+        },
         root_dir = function(fname)
           return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
         end,
@@ -510,18 +514,25 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'typescript-language-server',
         'stylua', -- Used to format Lua code
+        'java-debug-adapter',
+        'java-test'
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
+            --Dont call if jdlts:
+            if server_name ~= 'jdtls' then
+
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            -- if server_name ~= 'jdtls' then
             require('lspconfig')[server_name].setup(server)
+            end
           end,
         },
       }
