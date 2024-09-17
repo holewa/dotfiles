@@ -1,5 +1,3 @@
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
-
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -12,13 +10,8 @@ vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
 vim.keymap.set('n', 'J', 'mzJ`z')
-vim.keymap.set('n', '<C-d>', '<C-d>zz')
-vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
-
---LspInfo
--- vim.keymap.set('n', '<C-i>', ':LspInfo<CR>')
 
 -- greatest remap ever
 vim.keymap.set('x', '<leader>p', [["_dP]])
@@ -31,9 +24,6 @@ vim.keymap.set('n', '<leader>Y', [["+Y]])
 vim.keymap.set({ 'n', 'v' }, '<leader>p', [["+p]])
 vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
 
---Replace word with last yanked word
-vim.keymap.set('n', '<leader>ry', '"_viwp', { desc = '[R]eplace with [y]anked word' })
-
 -- This is going to get me cancelled
 vim.keymap.set('i', '<C-c>', '<Esc>')
 
@@ -43,10 +33,11 @@ vim.keymap.set('n', '<C-f>', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
 vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
 
---TODO: Check this out!
 vim.keymap.set('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = '[R]eplace [w]ord' })
 vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
 
+-- Ensure cursor stays on the same line when pressing Esc in Normal mode
+vim.api.nvim_set_keymap('n', '<Esc>', 'm`<Esc>`', { noremap = true, silent = true })
 --toggle auto-save
 --vim.api.nvim_set_keymap('n', '<C-s>', ':ASToggle<CR>', {})
 
@@ -98,17 +89,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
 -- Vimwiki in note window
 local spawn_note_window = require 'custom.spawn-note-window'
 vim.keymap.set('n', '<leader>wl', function()
@@ -142,11 +122,29 @@ vim.keymap.set('n', '<leader>gb', function()
   ToggleBlame()
 end, { desc = 'Git [b]lame' })
 
--- yank everything in current file
+-- yank related keybinds
 vim.keymap.set('n', '<leader>ya', 'ggVGy', { desc = '[y]ank [a]ll' })
+--  have the cursor jump back after yank
+vim.keymap.set('v', 'y', 'ygv<ESC>', { desc = '[y]ank [a]ll' })
+--Replace word with last yanked word
+vim.keymap.set('n', '<leader>ry', '"_viwp', { desc = '[R]eplace with [y]anked word' })
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
 
 --Flutter keybinds
 vim.keymap.set('n', '<leader>fr', ':FlutterRun<CR>', { desc = '[F]lutter [R]un' })
 vim.keymap.set('n', '<leader>fq', ':FlutterQuit<CR>', { desc = '[F]lutter [Q]uit' })
 vim.keymap.set('n', '<leader>fb', ':FlutterRestart<CR>', { desc = '[F]lutter Re[b]oot' })
 vim.keymap.set('n', '<leader>flr', ':FlutterLspRestart<CR>', { desc = '[F]lutter [L]sp [R]estart' })
+
+vim.api.nvim_set_keymap('n', '<C-w>r', '<C-w>v', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<C-w>b', '<C-w>s', { noremap = true, silent = true })

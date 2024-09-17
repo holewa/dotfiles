@@ -9,6 +9,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Set default device ID for flutter-tools
 -- vim.g.flutter_tools_device_id = 'device_id_here'
+--
+vim.cmd 'set splitbelow splitright'
 
 -- Set cmdheight to 1
 vim.cmd 'set cmdheight=10'
