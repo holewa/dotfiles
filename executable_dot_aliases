@@ -60,6 +60,8 @@ alias tmx='tmuxifier'
 alias tf='cd ~/af-projects/tajma-frontend/'
 alias tb='cd ~/af-projects/tajma-backend/'
 alias tc='cd ~/af-projects/tajma-config/'
+alias misb='cd ~/af-projects/avon.af-hr-system-saas-integrationer-batch/'
+alias misc='cd ~/af-projects/avon.af-hr-system-saas-integrationer-batch-configuration/'
 alias vc='cd ~/.config/nvim/'
 
 #Node
@@ -71,6 +73,8 @@ alias vcv=';vc ; v'
 alias tfv='cd ~/af-projects/tajma-frontend &&; v'
 alias tbv='cd ~/af-projects/tajma-backend &&; v'
 alias tcv='cd ~/af-projects/tajma-config &&; v'
+alias misbv='cd ~/af-projects/avon.af-hr-system-saas-integrationer-batch/ &&; v'
+alias miscv='cd ~/af-projects/avon.af-hr-system-saas-integrationer-batch-configuration/ &&; v'
 #vimwiki.
 alias vwv='cd ~/vimwiki &&; v index.wiki'
 
@@ -93,3 +97,6 @@ alias mci='mvn clean install'
 alias mcist='mvn clean install -DskipTests'
 alias msr='mvn spring-boot:run'
 alias pe='printenv'
+
+#autohotkey
+alias autohotkey='cd "/mnt/c/Users/hoaje/OneDrive - Arbetsförmedlingen/AutoHotkey" && v "window switcher.ahk"' 

@@ -32,7 +32,8 @@ local config = {
     '-javaagent:' .. lombok_jar,
 
     -- Eclipse jdtls location
-    '-jar', vim.env.HOME .. '/.local/share/nvim/mason/share/jdtls/plugins/org.eclipse.equinox.launcher.jar',
+    '-jar', vim.env.HOME ..
+  '/.local/share/nvim/mason/share/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
     '-configuration', vim.env.HOME .. '/.local/share/nvim/mason/packages/jdtls/config_linux',
     '-data', workspace_dir
   },
@@ -84,8 +85,14 @@ local config = {
         enabled = true,
         -- Formatting works by default, but you can refer to a specific file/URL if you choose
         settings = {
-          url = "https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml",
+          url = "/home/hoaje/.local/share/nvim/intellij-java-google-style.xml",
           profile = "GoogleStyle",
+          -- ["java.format.settings.url"] = vim.fn.expand "~/",
+          -- ".local/share/nvim/intellij-java-google-style.xml",
+          -- ["java.format.settings.profile"] = "GoogleStyle",
+          -- args = {
+          --   "--line-length=100"
+          -- }
         },
       },
     },

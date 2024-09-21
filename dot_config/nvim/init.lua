@@ -23,6 +23,7 @@ vim.o.compatible = false
 -- require 'vim-options'
 require 'keymaps'
 
+
 -- Example: Set a key mapping to manually trigger VimwikiProgressUpdate
 vim.api.nvim_set_keymap('n', '<Leader>vp', ':VimwikiProgressUpdate<CR>', { noremap = true, silent = true })
 
@@ -308,6 +309,13 @@ require('lazy').setup({
       -- Automatically install LSPs and related tools to stdpath for Neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      config = function ()
+        require('mason-lspconfig').setup({
+          ensure_installed = {
+            "lua_ls", "tsserver", "jdtls"
+          },
+        });
+      end,
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
@@ -532,7 +540,6 @@ require('lazy').setup({
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            -- if server_name ~= 'jdtls' then
             require('lspconfig')[server_name].setup(server)
             end
           end,
@@ -821,3 +828,4 @@ require 'vim-options'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
