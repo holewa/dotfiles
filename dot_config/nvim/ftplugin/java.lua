@@ -86,7 +86,7 @@ local config = {
         -- Formatting works by default, but you can refer to a specific file/URL if you choose
         settings = {
           url = "/home/hoaje/.local/share/nvim/intellij-java-google-style.xml",
-          profile = "GoogleStyle",
+          profile = "CodeFormatterProfile",
           -- ["java.format.settings.url"] = vim.fn.expand "~/",
           -- ".local/share/nvim/intellij-java-google-style.xml",
           -- ["java.format.settings.profile"] = "GoogleStyle",

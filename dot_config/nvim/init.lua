@@ -524,7 +524,7 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'typescript-language-server',
         'stylua', -- Used to format Lua code
-        'java-debug-adapter',
+        -- 'java-debug-adapter',
         'java-test'
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
