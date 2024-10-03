@@ -34,7 +34,9 @@ vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
 vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
 
 vim.keymap.set('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = '[R]eplace [w]ord' })
-vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
+
+--source the file
+vim.keymap.set('n', '<leader>xx', ':source %<CR>', { silent = true })
 
 -- Ensure cursor stays on the same line when pressing Esc in Normal mode
 vim.api.nvim_set_keymap('n', '<Esc>', 'm`<Esc>`', { noremap = true, silent = true })
@@ -148,3 +150,7 @@ vim.keymap.set('n', '<leader>flr', ':FlutterLspRestart<CR>', { desc = '[F]lutter
 vim.api.nvim_set_keymap('n', '<C-w>r', '<C-w>v', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<C-w>b', '<C-w>s', { noremap = true, silent = true })
+
+--rest console
+vim.keymap.set('n', '<leader>xr', ':call VrcQuery()<CR>')
+

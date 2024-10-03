@@ -60,7 +60,7 @@ local config = {
           },
           {
             name = "JavaSE-17",
-            path = java17_path,
+            path = vim.env.HOME .. '/.sdkman/candidates/java/current/',
           },
           -- {
           --   name = "JavaSE-19",

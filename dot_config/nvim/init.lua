@@ -44,6 +44,8 @@ require('lazy').setup({
   require 'plugins.fugitive',
   require 'plugins.vimwiki',
   require 'plugins.nvim-jdtls',
+  { 'diepm/vim-rest-console' },
+
   -- TODO: autoformat when format is working
   -- require 'plugins.conform',
   {
@@ -138,7 +140,7 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',          opts = {} },
+  { 'numToStr/Comment.nvim',    opts = {} },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -245,6 +247,16 @@ require('lazy').setup({
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
+        defaults = {
+          file_ignore_patterns = {
+            "target",      -- Ignore target folder
+            "build",       -- Ignore build folder
+            "%.class",     -- Ignore .class files
+            "%.o",         -- Ignore object files
+            "__pycache__", -- Ignore Python cache folder
+            "package%-lock.json"
+          },
+        },
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
@@ -309,7 +321,7 @@ require('lazy').setup({
       -- Automatically install LSPs and related tools to stdpath for Neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      config = function ()
+      config = function()
         require('mason-lspconfig').setup({
           ensure_installed = {
             "lua_ls", "tsserver", "jdtls"
@@ -500,6 +512,7 @@ require('lazy').setup({
         bundle_path = vim.fn.stdpath 'data' .. '/mason/packages/powershell-editor-services/',
       }
 
+
       require('lspconfig').bashls.setup {}
       local lspconfig = require('lspconfig')
 
@@ -534,13 +547,12 @@ require('lazy').setup({
           function(server_name)
             --Dont call if jdlts:
             if server_name ~= 'jdtls' then
-
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for tsserver)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+              local server = servers[server_name] or {}
+              -- This handles overriding only values explicitly passed
+              -- by the server configuration above. Useful when disabling
+              -- certain features of an LSP (for example, turning off formatting for tsserver)
+              server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+              require('lspconfig')[server_name].setup(server)
             end
           end,
         },
@@ -824,8 +836,9 @@ require('lazy').setup({
   },
 })
 
+require 'plugins.vim-rest-console'
 require 'vim-options'
+require('custom.autosave')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
