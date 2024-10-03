@@ -101,3 +101,8 @@ alias pe='printenv'
 
 #autohotkey
 alias autohotkey='cd "/mnt/c/Users/hoaje/OneDrive - Arbetsförmedlingen/AutoHotkey" && v "window switcher.ahk"' 
+
+#Gradle
+alias gradle="./gradlew"
+alias run="bootRun"
+alias gbar="./gradlew build && ./gradlew bootRun"
