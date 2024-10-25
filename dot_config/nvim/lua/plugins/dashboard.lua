@@ -1,19 +1,10 @@
-local quoteGenerator = require 'plugins.random-quote-generator'
-
-local searchNotes = function()
-  require('telescope.builtin').find_files { cwd = '~/vimwiki/' }
-end
 
 local searchInNotes = function()
   require('telescope.builtin').live_grep { cwd = '~/vimwiki/' }
 end
 
--- Function to display a random quote in the footer
-local getRandomQuote = function()
-  local randomQuote = quoteGenerator.fetchRandomQuote()
-  local randomQuoteContentAndAuthor = { content = randomQuote.content, author = randomQuote.author }
-  return randomQuoteContentAndAuthor
-end
+local quote = 'inspirationl_quotes_goes_here'
+-- local quoteGenerator = require 'plugins.random-quote-generator'
 
 return {
   'nvimdev/dashboard-nvim',
@@ -57,7 +48,7 @@ return {
             key = 'u',
           },
           {
-            desc = 'Inspirational quote goes here',
+            desc = quote,
             desc_hl = 'String',
           },
         },

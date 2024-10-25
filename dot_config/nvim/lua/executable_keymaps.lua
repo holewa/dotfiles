@@ -153,4 +153,4 @@ vim.api.nvim_set_keymap('n', '<C-w>b', '<C-w>s', { noremap = true, silent = true
 
 --rest console
 vim.keymap.set('n', '<leader>xr', ':call VrcQuery()<CR>')
-
+vim.g.vrc_horizontal_split = true

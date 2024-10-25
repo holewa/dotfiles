@@ -17,14 +17,8 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     group = vim.api.nvim_create_augroup("tutorial", { clear = true }),
     pattern = '*.java,*.kt,*.groovy,*.groovy,*.kts,*.gradle',
     callback = function()
-        setup_buffer();
-        --create a new buffer
-        -- bufnr = vim.api.nvim_create_buf(false, true)     -- false: not listed, true: scratch buffer
-        -- vim.cmd("new")                                   -- Open a new split window
-        -- vim.api.nvim_set_current_buf(bufnr)
-        -- Clear existing lines in the buffer
-        -- vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, {})     -- Clear the buffer
-        -- run gradle test
+        setup_buffer()
+        vim.api.nvim_buf_set_lines(bufnr, 0, 100000, false, {})
         vim.fn.jobstart({ "gradle", "test" }, {
             stdout_buffered = true,
             on_stdout = function(_, data)

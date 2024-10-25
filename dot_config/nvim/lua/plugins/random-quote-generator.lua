@@ -1,29 +1,24 @@
 local http = require 'socket.http' -- Assuming you have a Lua HTTP client library available
-local dkjson = require 'dkjson' -- Assuming you have a dkjson library available
+local dkjson = require 'dkjson'    -- Assuming you have a dkjson library available
 
 local QuoteAPI = {}
 
--- Function to fetch a random quote from the API
 function QuoteAPI.fetchRandomQuote()
-  local param = '?maxLength=50'
-  local param2 = '?tags=coding'
-
-  local url = 'https://api.quotable.io/quotes/random' .. param .. param2
+  local url = 'https://ron-swanson-quotes.herokuapp.com/v2/quotes'
   local response, status = http.request(url)
 
   if status == 200 then
     -- Parse the JSON response into a Lua table
-    local responseData = dkjson.decode(response)
+    local quoteData = dkjson.decode(response)
 
-    -- Check if responseData is an array and not empty
-    if type(responseData) == 'table' and #responseData > 0 then
-      local quoteData = responseData[1] -- Access the first element of the array
-      return quoteData
-    else
-      return 'No quote data found in response'
-    end
-  else
-    return 'Failed to fetch quote'
+    -- Check if quoteData is a table
+    -- if type(quoteData) == 'table' then
+    return quoteData[1];
+    -- else
+    --   return { content = 'No quote data found', author = '' }
+    -- end
+  -- else
+  --   return { content = 'Failed to fetch quote', author = '' }
   end
 end
 
