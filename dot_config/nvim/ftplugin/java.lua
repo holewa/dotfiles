@@ -2,8 +2,8 @@
 local jdtls = require('jdtls')
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = vim.env.HOME .. '/jdtls-workspace/' .. project_name
-local lombok_jar = '/home/hoaje/.local/share/nvim/mason/share/jdtls/lombok.jar'
-local java17_path = '/home/hoaje/.sdkman/candidates/java/17.0.12-zulu/'
+local lombok_jar = '/home/holewa/.local/share/nvim/mason/share/jdtls/lombok.jar'
+local java17_path = '/home/holewa/.sdkman/candidates/java/17.0.12-zulu/'
 
 -- Needed for debugging
 local bundles = {
@@ -85,7 +85,7 @@ local config = {
         enabled = true,
         -- Formatting works by default, but you can refer to a specific file/URL if you choose
         settings = {
-          url = "/home/hoaje/.local/share/nvim/intellij-java-google-style.xml",
+          url = "/home/holewa/.local/share/nvim/intellij-java-google-style.xml",
           profile = "GoogleStyle",
           -- ["java.format.settings.url"] = vim.fn.expand "~/",
           -- ".local/share/nvim/intellij-java-google-style.xml",
