@@ -7,7 +7,7 @@ return {
     'nvim-java/nvim-java-dap',
     'MunifTanjim/nui.nvim',
     'neovim/nvim-lspconfig',
-    'mfussenegger/nvim-dap',
+    -- 'mfussenegger/nvim-dap',
     {
       'williamboman/mason.nvim',
       opts = {
