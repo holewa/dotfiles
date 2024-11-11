@@ -25,20 +25,17 @@ local config = {
     '-Dosgi.bundles.defaultStartLevel=4',
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
     '-Dlog.protocol=true',
-    '-Dlog.level=ALL',
+    '-Dlog.level=ERROR',
     '-Xmx4g',
     '--add-modules=ALL-SYSTEM',
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
     '-javaagent:' .. lombok_jar,
-
-    -- Eclipse jdtls location
     '-jar', vim.env.HOME ..
   '/.local/share/nvim/mason/share/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
     '-configuration', vim.env.HOME .. '/.local/share/nvim/mason/packages/jdtls/config_linux',
     '-data', workspace_dir
   },
-
   -- This is the default if not provided, you can remove it. Or adjust as needed.
   -- One dedicated LSP server & client will be started per unique root_dir
   root_dir = require('jdtls.setup').find_root({ '.git', 'mvnw', 'pom.xml', 'build.gradle' }),
@@ -49,7 +46,8 @@ local config = {
     java = {
       home = java17_path,
       eclipse = {
-        downloadSources = true,
+        -- downloadSources = true,
+        downloadSources = false,
       },
       configuration = {
         updateBuildConfiguration = "interactive",
@@ -146,4 +144,5 @@ config['on_attach'] = function(client, bufnr)
 end
 
 -- This starts a new client & server, or attaches to an existing client & server based on the `root_dir`.
+jdtls.start_or_attach(config)
 jdtls.start_or_attach(config)
