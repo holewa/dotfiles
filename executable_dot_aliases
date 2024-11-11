@@ -109,3 +109,6 @@ alias autohotkey='cd "/mnt/c/Users/hoaje/OneDrive - Arbetsförmedlingen/AutoHotk
 alias gradle="./gradlew"
 alias run="bootRun"
 alias gbar="./gradlew build && ./gradlew bootRun"
+
+#Python
+alias python="python3"
