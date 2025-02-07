@@ -248,6 +248,7 @@ require('lazy').setup({
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
         defaults = {
+          path_display={"smart"},
           file_ignore_patterns = {
             "target",      -- Ignore target folder
             "build",       -- Ignore build folder
