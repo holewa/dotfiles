@@ -114,4 +114,4 @@ alias gbar="./gradlew build && ./gradlew bootRun"
 alias python="python3"
 
 #eza
-alias ezall="eza -al --group-directories-first"
+alias ez="eza -al --group-directories-first"
