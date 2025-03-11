@@ -79,3 +79,6 @@ vim.g.python3_host_prog = '/usr/bin/python3'
 
 --dont remember what this do
 vim.g.loaded_perl_provider = 0
+
+--avante options
+vim.opt.laststatus = 3
