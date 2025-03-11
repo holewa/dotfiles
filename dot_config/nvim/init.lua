@@ -44,6 +44,7 @@ require('lazy').setup({
   require 'plugins.fugitive',
   require 'plugins.vimwiki',
   require 'plugins.nvim-jdtls',
+  require 'plugins.avante',
   { 'diepm/vim-rest-console' },
 
   -- TODO: autoformat when format is working
@@ -86,17 +87,6 @@ require('lazy').setup({
         default_detail = 1,
       },
     },
-  },
-
-  {
-    'Exafunction/codeium.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'hrsh7th/nvim-cmp',
-    },
-    -- config = function()
-    --   require('codeium').setup {}
-    -- end,
   },
 
   {
@@ -708,7 +698,6 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
-          { name = 'codeium' },
           { name = 'angular' },
         },
       }
