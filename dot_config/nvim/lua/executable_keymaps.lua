@@ -154,3 +154,10 @@ vim.api.nvim_set_keymap('n', '<C-w>b', '<C-w>s', { noremap = true, silent = true
 --rest console
 vim.keymap.set('n', '<leader>xr', ':call VrcQuery()<CR>')
 vim.g.vrc_horizontal_split = true
+
+-- next/prev lsp error
+vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<C-p>', vim.diagnostic.goto_prev)
+
+-- prevent esc to jump down one row
+vim.api.nvim_set_keymap("n", "<Esc>", ":noh<CR>", { noremap = true, silent = true })
