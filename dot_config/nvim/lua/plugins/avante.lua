@@ -8,13 +8,16 @@ return {
     -- for example
 
 
- provider = "openai",
+    provider = "openai",
     openai = {
       endpoint = "https://api.openai.com/v1",
       model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-      timeout = 30000, -- timeout in milliseconds
-      temperature = 0, -- adjust if needed
+      timeout = 30000,  -- timeout in milliseconds
+      temperature = 0,  -- adjust if needed
       max_tokens = 4096,
+    },
+    behaviour = {
+      enable_cursor_planning_mode = true, -- enable cursor planning mode!
     },
 
     -- provider = "ollama",

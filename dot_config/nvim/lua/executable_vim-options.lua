@@ -82,3 +82,10 @@ vim.g.loaded_perl_provider = 0
 
 --avante options
 vim.opt.laststatus = 3
+
+vim.diagnostic.config({
+  virtual_text = false, -- Disable inline error text
+  signs = false, -- Hide error signs in the gutter
+  underline = false, -- Remove underline for errors
+})
+

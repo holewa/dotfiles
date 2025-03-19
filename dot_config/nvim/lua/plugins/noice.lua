@@ -24,8 +24,20 @@ return {
       },
       routes = {
         {
-          view = "notify",
+          view = "notify", -- Change this to a different view if needed
           filter = { event = "msg_showmode" },
+        },
+      },
+      views = {
+        notify = {
+          position = {
+            row = "20%", -- Adjust the row position
+            col = "20%", -- Adjust the column position
+          },
+          size = {
+            width = "auto", -- Adjust the width
+            height = "auto", -- Adjust the height
+          },
         },
       },
       -- you can enable a preset for easier configuration

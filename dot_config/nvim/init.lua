@@ -38,13 +38,15 @@ require('lazy').setup({
   require 'plugins.vim-tmux-navigator',
   require 'plugins.noice',
   require 'plugins.lualine',
-  require 'plugins.harpoon',
+  -- require 'plugins.harpoon',
   require 'plugins.telescope-undo',
   require 'plugins.nvim-web-devicons',
   require 'plugins.fugitive',
   require 'plugins.vimwiki',
   require 'plugins.nvim-jdtls',
   require 'plugins.avante',
+  require 'plugins.dartls',
+  require 'plugins.trouble',
   { 'diepm/vim-rest-console' },
 
   -- TODO: autoformat when format is working
@@ -172,15 +174,22 @@ require('lazy').setup({
       require('which-key').setup()
 
       -- Document existing key chains
-      require('which-key').register {
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-        ['<leader>f'] = { name = '[F]lutter', _ = 'which_key_ignore' },
-        ['<leader>fl'] = { name = '[Lsp]...', _ = 'which_key_ignore' },
-      }
+      require('which-key').add({
+    { "<leader>c", group = "[C]ode" },
+    { "<leader>c_", hidden = true },
+    { "<leader>d", group = "[D]ocument" },
+    { "<leader>d_", hidden = true },
+    { "<leader>f", group = "[F]lutter" },
+    { "<leader>f_", hidden = true },
+    { "<leader>fl", group = "[Lsp]..." },
+    { "<leader>fl_", hidden = true },
+    { "<leader>r", group = "[R]ename" },
+    { "<leader>r_", hidden = true },
+    { "<leader>s", group = "[S]earch" },
+    { "<leader>s_", hidden = true },
+    { "<leader>w", group = "[W]orkspace" },
+    { "<leader>w_", hidden = true },
+  })
     end,
   },
 
