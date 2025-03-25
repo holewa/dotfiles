@@ -250,7 +250,7 @@ require('lazy').setup({
           path_display={"smart"},
           file_ignore_patterns = {
             "target",      -- Ignore target folder
-            "build",       -- Ignore build folder
+            "build/.*",       -- Ignore build folder
             "%.class",     -- Ignore .class files
             "%.o",         -- Ignore object files
             "__pycache__", -- Ignore Python cache folder
