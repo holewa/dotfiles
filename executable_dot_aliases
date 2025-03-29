@@ -117,3 +117,5 @@ alias python="python3"
 alias ez="eza -al --group-directories-first"
 
 alias dns-switch="sudo ~/dns-switch.sh"
+
+# Testkommentar
