@@ -154,16 +154,23 @@ export NVM_DIR="$HOME/.nvm"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-
 ZSH_THEME="powerlevel10k/powerlevel10k"
 export PATH="$PATH:$HOME/flutter/bin"
 export PATH=$PATH:/opt/android-studio/bin
 export PATH=$PATH:/opt/android-studio/bin
 
-
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
 eval "$(zoxide init zsh)"
+
+# Bitwarden
+bwcp() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: bcp <item-name>"
+        return 1
+    fi
+    bw get password "$1" | xclip -selection clipboard
+    echo "Password copied to clipboard!"
+}
