@@ -3,7 +3,7 @@ local searchInNotes = function()
   require('telescope.builtin').live_grep { cwd = '~/vimwiki/' }
 end
 
-local quote = 'inspirationl_quotes_goes_here'
+local quote = 'inspirationl_quote_goes_here'
 -- local quoteGenerator = require 'plugins.random-quote-generator'
 
 return {
