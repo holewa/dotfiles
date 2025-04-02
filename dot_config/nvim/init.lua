@@ -47,6 +47,7 @@ require('lazy').setup({
   require 'plugins.avante',
   require 'plugins.dartls',
   require 'plugins.trouble',
+  -- require 'plugins.telescope',
   { 'diepm/vim-rest-console' },
 
   -- TODO: autoformat when format is working
@@ -175,21 +176,21 @@ require('lazy').setup({
 
       -- Document existing key chains
       require('which-key').add({
-    { "<leader>c", group = "[C]ode" },
-    { "<leader>c_", hidden = true },
-    { "<leader>d", group = "[D]ocument" },
-    { "<leader>d_", hidden = true },
-    { "<leader>f", group = "[F]lutter" },
-    { "<leader>f_", hidden = true },
-    { "<leader>fl", group = "[Lsp]..." },
-    { "<leader>fl_", hidden = true },
-    { "<leader>r", group = "[R]ename" },
-    { "<leader>r_", hidden = true },
-    { "<leader>s", group = "[S]earch" },
-    { "<leader>s_", hidden = true },
-    { "<leader>w", group = "[W]orkspace" },
-    { "<leader>w_", hidden = true },
-  })
+        { "<leader>c",   group = "[C]ode" },
+        { "<leader>c_",  hidden = true },
+        { "<leader>d",   group = "[D]ocument" },
+        { "<leader>d_",  hidden = true },
+        { "<leader>f",   group = "[F]lutter" },
+        { "<leader>f_",  hidden = true },
+        { "<leader>fl",  group = "[Lsp]..." },
+        { "<leader>fl_", hidden = true },
+        { "<leader>r",   group = "[R]ename" },
+        { "<leader>r_",  hidden = true },
+        { "<leader>s",   group = "[S]earch" },
+        { "<leader>s_",  hidden = true },
+        { "<leader>w",   group = "[W]orkspace" },
+        { "<leader>w_",  hidden = true },
+      })
     end,
   },
 
@@ -206,6 +207,7 @@ require('lazy').setup({
     branch = 'master',
     dependencies = {
       'nvim-lua/plenary.nvim',
+      "nvim-telescope/telescope-live-grep-args.nvim",
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
         'nvim-telescope/telescope-fzf-native.nvim',
 
@@ -247,10 +249,10 @@ require('lazy').setup({
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
         defaults = {
-          path_display={"smart"},
+          path_display = { "smart" },
           file_ignore_patterns = {
             "target",      -- Ignore target folder
-            "build/.*",       -- Ignore build folder
+            "build/.*",    -- Ignore build folder
             "%.class",     -- Ignore .class files
             "%.o",         -- Ignore object files
             "__pycache__", -- Ignore Python cache folder
@@ -271,6 +273,8 @@ require('lazy').setup({
             require('telescope.themes').get_dropdown(),
           },
         },
+        -- then load the extension
+        -- telescope.load_extension("live_grep_args")
       }
 
       -- Enable Telescope extensions if they are installed
@@ -284,11 +288,18 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+
+      -- grep with args
+      local live_grep_args = require('telescope').extensions.live_grep_args
+      vim.keymap.set('n', '<leader>sg', live_grep_args.live_grep_args, { desc = '[S]earch by [G]rep' })
+
+      -- shortcuts
+      local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
+      vim.keymap.set("n", "<leader>sc", live_grep_args_shortcuts.grep_word_under_cursor, { desc = '[S]earch by [G]rep' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -514,7 +525,7 @@ require('lazy').setup({
       end
 
       local angularls_path =
-      vim.env.HOME .. ".local/share/nvim/mason/packages/angular-language-server/."
+          vim.env.HOME .. ".local/share/nvim/mason/packages/angular-language-server/."
       -- mason_registry.get_package('angular-language-server'):get_install_ath()
 
       local cmd = {
@@ -536,7 +547,7 @@ require('lazy').setup({
         cmd = cmd,
         on_new_config = function(new_config, new_root_dir)
           new_config.cmd = cmd
-      end,
+        end,
       }
 
 
@@ -545,22 +556,22 @@ require('lazy').setup({
       }
 
 
-      require('lspconfig').bashls.setup {}
-      local lspconfig = require('lspconfig')
-
-      lspconfig.sonarlint.setup {
-        cmd = { "sonarlint-language-server", "-stdio" },
-        filetypes = { "javascript",
-          "typescript",
-          "python",
-        },
-        root_dir = function(fname)
-          return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
-        end,
-        settings = {
-          -- Add any specific settings for SonarLint here
-        },
-      }
+      -- require('lspconfig').bashls.setup {}
+      -- local lspconfig = require('lspconfig')
+      --
+      -- lspconfig.sonarlint.setup {
+      --   cmd = { "sonarlint-language-server", "-stdio" },
+      --   filetypes = { "javascript",
+      --     "typescript",
+      --     "python",
+      --   },
+      --   root_dir = function(fname)
+      --     return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
+      --   end,
+      --   settings = {
+      --     -- Add any specific settings for SonarLint here
+      --   },
+      -- }
       require('mason').setup()
 
       -- You can add other tools here that you want Mason to install
@@ -873,4 +884,9 @@ require 'vim-options'
 -- require('custom.autosave')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
 -- vim: ts=2 sts=2 sw=2 et
