@@ -174,3 +174,6 @@ bwcp() {
     bw get password "$1" | xclip -selection clipboard
     echo "Password copied to clipboard!"
 }
+
+#zoxide -change key from z to j
+eval "$(zoxide init zsh --cmd j)"
