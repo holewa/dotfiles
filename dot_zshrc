@@ -177,3 +177,6 @@ bwcp() {
 
 #zoxide -change key from z to j
 eval "$(zoxide init zsh --cmd j)"
+
+# z-completions
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
