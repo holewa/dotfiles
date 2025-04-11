@@ -5,8 +5,8 @@ local bufnr
 local function setup_buffer()
     if not bufnr or not vim.api.nvim_buf_is_valid(bufnr) then
         bufnr = vim.api.nvim_create_buf(false, true) -- Create the buffer if it doesn't exist
-        vim.cmd("vnew")                              -- Open a vertical split
-        vim.cmd("vertical resize 40")
+        vim.cmd("new")                              -- Open a vertical split
+        vim.cmd("resize 15")
         vim.api.nvim_set_current_buf(bufnr)          -- Set the current buffer to the new buffer
     end
 end
@@ -14,12 +14,14 @@ end
 
 
 vim.api.nvim_create_autocmd("BufWritePost", {
+    print(vim.fn.expand("%:t:r"));
     group = vim.api.nvim_create_augroup("tutorial", { clear = true }),
     pattern = '*.java,*.kt,*.groovy,*.groovy,*.kts,*.gradle',
     callback = function()
         setup_buffer()
         vim.api.nvim_buf_set_lines(bufnr, 0, 100000, false, {})
-        vim.fn.jobstart({ "gradle", "test" }, {
+        -- vim.fn.jobstart({ "javac", vim.fn.expand("%:t:r") }, {
+        vim.fn.jobstart({ "sh", "-c", "java ProblemB.java < input.txt" }, {
             stdout_buffered = true,
             on_stdout = function(_, data)
                 if data then
