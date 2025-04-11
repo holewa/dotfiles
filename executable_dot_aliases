@@ -92,8 +92,8 @@ alias edge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe
 alias chrome='/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe'
 
 #Running Tajma
-alias tajba='cd ~/af-projects/tajma-backend && mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=dev"'
-alias tajfro='cd ~/af-projects/tajma-frontend &&; ns' 
+alias tajba='cd ~/af-projects/tajma/tajma-backend && mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=dev"'
+alias tajfro='cd ~/af-projects/tajma/tajma-frontend &&; ns' 
 alias sjof='cd ~/af-projects/avon.service.sjukofrisk && mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=local"'
 
 #mvn
