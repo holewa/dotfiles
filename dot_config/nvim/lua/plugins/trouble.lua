@@ -1,6 +1,14 @@
 return {
   "folke/trouble.nvim",
-  opts = {}, -- for default options, refer to the configuration section for custom setup.
+  opts = {
+    focus = true,
+    win = { type = "float" },
+    keys = {
+      -- The defaults for these are reversed but when having a floating window I want it to close on <cr>
+      o = "jump",
+      ["<cr>"] = "jump_close",
+    },
+  },
   cmd = "Trouble",
   keys = {
     {

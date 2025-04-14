@@ -1,9 +1,17 @@
 return {
-  -- Set lualine as statusline
   'nvim-lualine/lualine.nvim',
-  -- See `:help lualine.txt`
-  config = function()
-    require('lualine').setup {
+  dependencies = { "folke/trouble.nvim" },
+  opts = function()
+    local trouble = require("trouble")
+    local symbols = trouble.statusline({
+      mode = "lsp_document_symbols",
+      groups = {},
+      title = false,
+      filter = { range = true },
+      format = "{kind_icon}{symbol.name:Normal}",
+      hl_group = "lualine_c_normal",
+    })
+    return {
       options = {
         fmt = string.lower,
         theme = 'tokyonight',
@@ -19,18 +27,15 @@ return {
             'filename',
             path = 1,
           },
+          {
+            symbols.get,
+            cond = symbols.has,
+          },
         },
-        lualine_x = {
-          -- 'branch',
-          --'diff',
-          --'diagnostics'
-        },
+        lualine_x = {},
         lualine_y = { 'progress' },
         lualine_z = { 'location' },
       },
     }
   end,
-  opts = {
-    options = {},
-  },
 }

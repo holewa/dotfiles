@@ -21,7 +21,8 @@ vim.api.nvim_create_autocmd("BufWritePost", {
         setup_buffer()
         vim.api.nvim_buf_set_lines(bufnr, 0, 100000, false, {})
         -- vim.fn.jobstart({ "javac", vim.fn.expand("%:t:r") }, {
-        vim.fn.jobstart({ "sh", "-c", "java ProblemB.java < input.txt" }, {
+        -- vim.fn.jobstart({ "sh", "-c", "java ProblemC.java < input.txt" }, {
+        vim.fn.jobstart({ "sh", "-c", "javac *.java && java ProblemC < input.txt" }, {
             stdout_buffered = true,
             on_stdout = function(_, data)
                 if data then
