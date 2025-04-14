@@ -84,13 +84,13 @@ vim.g.loaded_perl_provider = 0
 vim.opt.laststatus = 3
 
 vim.diagnostic.config({
-  virtual_text = false, -- Disable inline error text
+  virtual_text = true, -- Disable inline error text
   signs = false, -- Hide error signs in the gutter
   underline = false, -- Remove underline for errors
 })
 
  vim.opt.fillchars = {
-    vert = "▕", -- alternatives │
+    vert = "│", -- alternatives │
     fold = " ",
     eob = " ", -- suppress ~ at EndOfBuffer
     diff = "╱", -- alternatives = ⣿ ░ ─

@@ -28,17 +28,15 @@ require 'keymaps'
 vim.api.nvim_set_keymap('n', '<Leader>vp', ':VimwikiProgressUpdate<CR>', { noremap = true, silent = true })
 
 require('lazy').setup({
-  --pluginz installed by me
+  --pluginz from plugins folder
   require 'plugins.neo-tree',
   require 'plugins.autotag',
   require 'plugins.comment',
   require 'plugins.dashboard',
   require 'plugins.fine-cmdline',
-  -- require 'plugins.chatgpt',
   require 'plugins.vim-tmux-navigator',
   require 'plugins.noice',
   require 'plugins.lualine',
-  -- require 'plugins.harpoon',
   require 'plugins.telescope-undo',
   require 'plugins.nvim-web-devicons',
   require 'plugins.fugitive',
@@ -47,6 +45,7 @@ require('lazy').setup({
   require 'plugins.avante',
   require 'plugins.dartls',
   require 'plugins.trouble',
+  require 'plugins.tree-sitter',
   -- require 'plugins.onedark',
   -- require 'plugins.telescope',
   { 'diepm/vim-rest-console' },
@@ -68,7 +67,7 @@ require('lazy').setup({
   -- { 'mfussenegger/nvim-jdtls' },
   -- require 'plugins.java.init',
   -- {'nvim-java/nvim-java'},
-  { 'nvim-treesitter/nvim-treesitter' },
+  -- { 'nvim-treesitter/nvim-treesitter' },
   --require 'plugins.auto-save',
   -- require 'plugins.obsidian',
   -- { 'xiyaowong/transparent.nvim' },
@@ -392,6 +391,7 @@ require('lazy').setup({
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
+
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
@@ -556,23 +556,6 @@ require('lazy').setup({
         bundle_path = vim.fn.stdpath 'data' .. '/mason/packages/powershell-editor-services/',
       }
 
-
-      -- require('lspconfig').bashls.setup {}
-      -- local lspconfig = require('lspconfig')
-      --
-      -- lspconfig.sonarlint.setup {
-      --   cmd = { "sonarlint-language-server", "-stdio" },
-      --   filetypes = { "javascript",
-      --     "typescript",
-      --     "python",
-      --   },
-      --   root_dir = function(fname)
-      --     return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
-      --   end,
-      --   settings = {
-      --     -- Add any specific settings for SonarLint here
-      --   },
-      -- }
       require('mason').setup()
 
       -- You can add other tools here that you want Mason to install
@@ -787,57 +770,57 @@ require('lazy').setup({
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
-  { -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    opts = {
-      ensure_installed = {
-        'bash',
-        'c',
-        'html',
-        'lua',
-        'luadoc',
-        'markdown',
-        'vim',
-        'vimdoc',
-        'lua',
-        'javascript',
-        'typescript',
-        'bash',
-        'angular',
-        'java',
-      },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
-    },
-    config = function(_, opts)
-      -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-
-      ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup(opts)
-      -- ensure_installed = { 'bash', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'java' },
-      -- auto_install = true,
-      -- highlight = { enable = true },
-      -- indent = { enable = true },
-      -- }
-
-      -- There are additional nvim-treesitter modules that you can use to interact
-      -- with nvim-treesitter. You should go explore a few and see what interests you:
-      --
-      --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-      --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-      --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-    end,
-
-  },
+  -- { -- Highlight, edit, and navigate code
+  --   'nvim-treesitter/nvim-treesitter',
+  --   build = ':TSUpdate',
+  --   opts = {
+  --     ensure_installed = {
+  --       'bash',
+  --       'c',
+  --       'html',
+  --       'lua',
+  --       'luadoc',
+  --       'markdown',
+  --       'vim',
+  --       'vimdoc',
+  --       'lua',
+  --       'javascript',
+  --       'typescript',
+  --       'bash',
+  --       'angular',
+  --       'java',
+  --     },
+  --     -- Autoinstall languages that are not installed
+  --     auto_install = true,
+  --     highlight = {
+  --       enable = true,
+  --       -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+  --       --  If you are experiencing weird indenting issues, add the language to
+  --       --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+  --       additional_vim_regex_highlighting = { 'ruby' },
+  --     },
+  --     indent = { enable = true, disable = { 'ruby' } },
+  --   },
+  --   config = function(_, opts)
+  --     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+  --
+  --     ---@diagnostic disable-next-line: missing-fields
+  --     require('nvim-treesitter.configs').setup(opts)
+  --     -- ensure_installed = { 'bash', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'java' },
+  --     -- auto_install = true,
+  --     -- highlight = { enable = true },
+  --     -- indent = { enable = true },
+  --     -- }
+  --
+  --     -- There are additional nvim-treesitter modules that you can use to interact
+  --     -- with nvim-treesitter. You should go explore a few and see what interests you:
+  --     --
+  --     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
+  --     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
+  --     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  --   end,
+  --
+  -- },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and

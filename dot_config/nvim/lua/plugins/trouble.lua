@@ -3,6 +3,7 @@ return {
   opts = {
     focus = true,
     win = { type = "float" },
+    auto_preview = true,
     keys = {
       -- The defaults for these are reversed but when having a floating window I want it to close on <cr>
       o = "jump",

@@ -37,4 +37,4 @@
         -- javascript = { { "prettierd", "prettier" } },
       },
     },
-  },
+  }
