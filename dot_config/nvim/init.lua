@@ -47,6 +47,7 @@ require('lazy').setup({
   require 'plugins.avante',
   require 'plugins.dartls',
   require 'plugins.trouble',
+  -- require 'plugins.onedark',
   -- require 'plugins.telescope',
   { 'diepm/vim-rest-console' },
 
