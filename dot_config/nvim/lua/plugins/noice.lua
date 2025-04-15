@@ -31,8 +31,6 @@ return {
       views = {
         notify = {
           position = {
-            row = "20%", -- Adjust the row position
-            col = "20%", -- Adjust the column position
           },
           size = {
             width = "auto", -- Adjust the width
