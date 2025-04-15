@@ -114,6 +114,7 @@ alias gbar="./gradlew build && ./gradlew bootRun"
 alias python="python3"
 
 #eza
-alias ez="eza -al --group-directories-first"
+alias ez="eza -T -L=1 -s=type"
+alias ezr="eza -T -R -L=2 -s=type"
 
 alias dns-switch="sudo ~/dns-switch.sh"
