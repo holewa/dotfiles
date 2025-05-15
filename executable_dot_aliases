@@ -5,15 +5,11 @@ alias cl='clear'
 alias cls='clear && ls'
 alias ls='ls -a'
 
-#aliases-file
-alias va='nvim ~/.aliases'
-alias sa='source ~/.aliases'
-
 #nvim
 # not using chatgpt atm
 # alias v='pass show personal/chatgpt && nvim'
-alias v='nvim'
-alias vi='echo vi is old shit, just use v'
+alias v='XDG_CONFIG_HOME=$HOME/.config/nvim nvim'
+alias nvim-old='XDG_CONFIG_HOME=$HOME/.config/nvim-old nvim'
 
 #Git aliases
 alias gs='git status'
@@ -68,7 +64,7 @@ alias misc='cd ~/af-projects/avon.af-hr-system-saas-integrationer-batch-configur
 alias vc='cd ~/.config/nvim/'
 
 #Node
-alias ns='npm start'
+# alias ns='npm start'
 # alias node='ts-node'
 
 #Open directory in vim
@@ -93,7 +89,7 @@ alias chrome='/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe'
 
 #Running Tajma
 alias tajba='cd ~/af-projects/tajma/tajma-backend && mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=dev"'
-alias tajfro='cd ~/af-projects/tajma/tajma-frontend &&; ns' 
+alias tajfro='cd ~/af-projects/tajma/tajma-frontend &&; npm start' 
 alias sjof='cd ~/af-projects/avon.service.sjukofrisk && mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=local"'
 
 #mvn
@@ -116,5 +112,17 @@ alias python="python3"
 #eza
 alias ez="eza -T -L=1 -s=type"
 alias ezr="eza -T -R -L=2 -s=type"
+alias ezs='function _eza_search() { rg -l "$1" | eza -l --stdin; }; _eza_search'
+alias ezf='function _eza_find() { fd "$1" | eza -l --stdin; }; _eza_find'
+
+#fd-find
+alias fd=fdfind
 
 alias dns-switch="sudo ~/dns-switch.sh"
+
+#Spring cli
+alias spring='java -jar $HOME/spring-cli/build/libs/spring-cli-0.10.0-SNAPSHOT.jar'
+
+#Dadjoke
+alias dj='$HOME/other-projects/dadjoke/target/dadjoke'
+
