@@ -28,7 +28,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
 vim.keymap.set('i', '<C-c>', '<Esc>')
 
 vim.keymap.set('n', 'Q', '<nop>')
-vim.keymap.set('n', '<C-f>', vim.lsp.buf.format)
+-- vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)
 
 vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
 vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
@@ -82,10 +82,10 @@ vim.keymap.set('n', '<Esc>', ':noh<CR><CR>')
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Vimwiki in note window
-local spawn_note_window = require 'custom.spawn-note-window'
-vim.keymap.set('n', '<leader>wl', function()
-  spawn_note_window()
-end, { desc = 'Spawn Note Window' })
+-- local spawn_note_window = require 'custom.plugins.spawn-note-window'
+-- vim.keymap.set('n', '<leader>wl', function()
+--   spawn_note_window()
+-- end, { desc = 'Spawn Note Window' })
 
 --Go back/close current window
 vim.keymap.set('n', '<C-q>', ':q<CR>')
@@ -121,10 +121,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 --Flutter keybinds
-vim.keymap.set('n', '<leader>fr', ':FlutterRun<CR>', { desc = '[F]lutter [R]un' })
-vim.keymap.set('n', '<leader>fq', ':FlutterQuit<CR>', { desc = '[F]lutter [Q]uit' })
-vim.keymap.set('n', '<leader>fb', ':FlutterRestart<CR>', { desc = '[F]lutter Re[b]oot' })
-vim.keymap.set('n', '<leader>flr', ':FlutterLspRestart<CR>', { desc = '[F]lutter [L]sp [R]estart' })
+vim.keymap.set('n', '<leader>Fr', ':FlutterRun<CR>', { desc = '[F]lutter [R]un' })
+vim.keymap.set('n', '<leader>Fq', ':FlutterQuit<CR>', { desc = '[F]lutter [Q]uit' })
+vim.keymap.set('n', '<leader>Fb', ':FlutterRestart<CR>', { desc = '[F]lutter Re[b]oot' })
+vim.keymap.set('n', '<leader>Flr', ':FlutterLspRestart<CR>', { desc = '[F]lutter [L]sp [R]estart' })
 
 vim.api.nvim_set_keymap('n', '<C-w>r', '<C-w>v', { noremap = true, silent = true })
 
@@ -136,12 +136,12 @@ vim.g.vrc_horizontal_split = true
 
 -- next/prev lsp error
 vim.keymap.set('n', '<C-n>', function()
-  vim.diagnostic.goto_next({ float = false })
+  vim.diagnostic.goto_next { float = false }
 end)
 
 vim.keymap.set('n', '<C-p>', function()
-  vim.diagnostic.go_to_prev({ float = false })
+  vim.diagnostic.go_to_prev { float = false }
 end)
 
 -- prevent esc to jump down one row
-vim.api.nvim_set_keymap("n", "<Esc>", ":noh<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
