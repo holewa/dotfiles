@@ -8,7 +8,7 @@ alias ls='ls -a'
 #nvim
 # not using chatgpt atm
 # alias v='pass show personal/chatgpt && nvim'
-alias v='XDG_CONFIG_HOME=$HOME/.config/nvim nvim'
+alias v='nvim'
 alias nvim-old='XDG_CONFIG_HOME=$HOME/.config/nvim-old nvim'
 
 #Git aliases
