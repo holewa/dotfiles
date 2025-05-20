@@ -60,11 +60,11 @@ local config = {
   },
 }
 
-local lsp_keymaps = require('custom.plugins.lsp.lps_keymaps').on_attach
+-- local lsp_keymaps = require('custom.plugins.lsp.lps_keymaps').on_attach
 -- This starts a new client & server,
 
 -- or attaches to an existing client & s
 require('jdtls').start_or_attach(vim.tbl_deep_extend('force', config, {
-  on_attach = lsp_keymaps,
+  -- on_attach = lsp_keymaps,
 }))
 -- require('jdtls').start_or_attach(config) {}

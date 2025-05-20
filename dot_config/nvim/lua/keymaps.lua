@@ -52,8 +52,8 @@ vim.keymap.set('n', '<leader>chf', ':ChatGPTRun fix_bugs', { desc = '[F]ix bugs'
 vim.keymap.set('n', '<leader>cht', ':ChatGPTRun add_tests', { desc = '[A]dd tests' })
 
 --Neotree
-vim.keymap.set('n', '<leader>N', ':Neotree toggle show<CR>', { silent = false })
-vim.keymap.set('n', '<leader>n', ':Neotree toggle reveal focus<CR>')
+-- vim.keymap.set('n', '<leader>e', ':Neotree toggle show<CR>', { silent = false })
+-- vim.keymap.set('n', '<leader>e', ':Neotree toggle reveal focus<CR>')
 
 --centering screen when jumping
 vim.keymap.set('v', 'p', '"_dP')
@@ -72,7 +72,7 @@ vim.keymap.set('n', '<leader>icl', "iconsole.log('')<ESC>hi")
 vim.keymap.set('n', '<leader>icn', "oconsole.log('')<ESC>hi")
 
 --format windows format to unix
-vim.keymap.set('n', '<Leader>.', ': %!dos2unix<CR>')
+vim.keymap.set('n', '<Leader>gr.', ': %!dos2unix<CR>')
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', ':noh<CR><CR>')
@@ -88,7 +88,7 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- end, { desc = 'Spawn Note Window' })
 
 --Go back/close current window
-vim.keymap.set('n', '<C-q>', ':q<CR>')
+vim.keymap.set('n', '<leader>q', ':q<CR>')
 
 -- Toggle Git blame using vim fugitive
 local ToggleBlame = function()
@@ -139,9 +139,14 @@ vim.keymap.set('n', '<C-n>', function()
   vim.diagnostic.goto_next { float = false }
 end)
 
-vim.keymap.set('n', '<C-p>', function()
-  vim.diagnostic.go_to_prev { float = false }
-end)
+-- vim.keymap.set('n', '<C-p>', function()
+--   vim.diagnostic.go_to_prev { float = false }
+-- end)
 
 -- prevent esc to jump down one row
 vim.api.nvim_set_keymap('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
+
+
+vim.keymap.set('n', '<C-i>', '<C-^>', { noremap = true, silent = true })
+
+-- vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
