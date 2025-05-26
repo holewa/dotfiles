@@ -14,10 +14,9 @@ alias nvim-old='XDG_CONFIG_HOME=$HOME/.config/nvim-old nvim'
 #Git aliases
 alias gs='git status'
 # Git combo which will ask for commit, otherwise do it all
-# alias gacp='git add . && git commit -e && if [ $? -eq 0 ]; then git push; fi'
 
 # Lazygit
-alias lg='lazygit'
+alias gg='lazygit'
 
 #Copypath
 alias copa='copypath'
@@ -120,9 +119,5 @@ alias fd=fdfind
 
 alias dns-switch="sudo ~/dns-switch.sh"
 
-#Spring cli
-alias spring='java -jar $HOME/spring-cli/build/libs/spring-cli-0.10.0-SNAPSHOT.jar'
-
-#Dadjoke
-alias dj='$HOME/other-projects/dadjoke/target/dadjoke'
-
+#vimwiki
+alias ww="v ~/vimwiki/index.wiki"
