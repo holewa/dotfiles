@@ -4,6 +4,8 @@
 
 A starting point for Neovim that is:
 
+
+
 * Small
 * Single-file
 * Completely Documented

@@ -28,7 +28,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
 vim.keymap.set('i', '<C-c>', '<Esc>')
 
 vim.keymap.set('n', 'Q', '<nop>')
--- vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)
+vim.keymap.set('n', '<leader>F', vim.lsp.buf.format)
 
 vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
 vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
@@ -88,7 +88,7 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- end, { desc = 'Spawn Note Window' })
 
 --Go back/close current window
-vim.keymap.set('n', '<leader>q', ':q<CR>')
+vim.keymap.set('n', '<C-q>', ':q<CR>')
 
 -- Toggle Git blame using vim fugitive
 local ToggleBlame = function()
@@ -120,11 +120,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
---Flutter keybinds
-vim.keymap.set('n', '<leader>Fr', ':FlutterRun<CR>', { desc = '[F]lutter [R]un' })
-vim.keymap.set('n', '<leader>Fq', ':FlutterQuit<CR>', { desc = '[F]lutter [Q]uit' })
-vim.keymap.set('n', '<leader>Fb', ':FlutterRestart<CR>', { desc = '[F]lutter Re[b]oot' })
-vim.keymap.set('n', '<leader>Flr', ':FlutterLspRestart<CR>', { desc = '[F]lutter [L]sp [R]estart' })
 
 vim.api.nvim_set_keymap('n', '<C-w>r', '<C-w>v', { noremap = true, silent = true })
 
@@ -150,3 +145,6 @@ vim.api.nvim_set_keymap('n', '<Esc>', ':noh<CR>', { noremap = true, silent = tru
 vim.keymap.set('n', '<C-i>', '<C-^>', { noremap = true, silent = true })
 
 -- vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
+vim.keymap.set("n", "-", function()
+  require("oil").toggle_float()
+end, { desc = "Toggle Oil Float" })

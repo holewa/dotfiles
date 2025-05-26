@@ -64,7 +64,8 @@ local config = {
 -- This starts a new client & server,
 
 -- or attaches to an existing client & s
-require('jdtls').start_or_attach(vim.tbl_deep_extend('force', config, {
+-- require('jdtls').start_or_attach(vim.tbl_deep_extend('force', config, {
   -- on_attach = lsp_keymaps,
-}))
--- require('jdtls').start_or_attach(config) {}
+-- }))
+--
+require('jdtls').start_or_attach(config)

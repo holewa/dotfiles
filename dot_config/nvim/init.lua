@@ -30,7 +30,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<C-S-h>', '<C-w>H', { desc = 'Move window to the left' })
 vim.keymap.set('n', '<C-S-l>', '<C-w>L', { desc = 'Move window to the right' })
 vim.keymap.set('n', '<C-S-j>', '<C-w>J', { desc = 'Move window to the lower' })
-vim.keymap.set('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
+vim.keymap.set('n', '<C-Sk>', '<C-w>K', { desc = 'Move window to the upper' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -80,6 +80,7 @@ vim.api.nvim_create_autocmd('FileType', {
 --    :Lazy update
 --
 require 'keymaps'
+
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
@@ -208,7 +209,7 @@ require('lazy').setup({
         callback = function(event)
           vim.api.nvim_create_autocmd('LspAttach', {
 
-            require('custom.plugins.lsp.lps_keymaps').on_attach(client, bufnr),
+            -- require('custom.plugins.lsp.lps_keymaps').on_attach(client, bufnr),
 
             group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
             callback = function(event)
@@ -682,6 +683,5 @@ require('lazy').setup({
 })
 
 require 'custom.vim-options'
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
