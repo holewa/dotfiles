@@ -148,3 +148,33 @@ vim.keymap.set('n', '<C-i>', '<C-^>', { noremap = true, silent = true })
 vim.keymap.set("n", "-", function()
   require("oil").toggle_float()
 end, { desc = "Toggle Oil Float" })
+
+local function dos2unix_function()
+  -- Save search register, cursor position
+  local save_search = vim.fn.getreg('/')
+  local line = vim.api.nvim_win_get_cursor(0)[1]
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+
+  -- Try block equivalent
+  local ok, err = pcall(function()
+    vim.opt.fileformat = 'unix'    -- set ff=unix
+    vim.cmd('write!')              -- save file forcibly
+    -- You can also add substitution here if needed
+    -- vim.cmd([[%s/\r$//e]])
+  end)
+
+  if not ok then
+    print("Sorry, the file is not saved: " .. err)
+  end
+
+  -- Restore search register and cursor position
+  vim.fn.setreg('/', save_search)
+  vim.api.nvim_win_set_cursor(0, {line, col})
+end
+
+vim.keymap.set('n', 'p', function()
+  -- Delete without affecting registers, then paste
+  vim.cmd('normal! p')
+  -- Run dos2unix function to fix line endings & save without jumps
+  dos2unix_function()
+end, { noremap = true, silent = true })
