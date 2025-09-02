@@ -142,7 +142,7 @@ end)
 vim.api.nvim_set_keymap('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
 
 
-vim.keymap.set('n', '<C-i>', '<C-^>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<C-i>', '<C-^>', { noremap = true, silent = true })
 
 -- vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
 vim.keymap.set("n", "-", function()
