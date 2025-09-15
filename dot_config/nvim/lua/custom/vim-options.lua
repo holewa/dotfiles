@@ -122,7 +122,7 @@ vim.diagnostic.config {
 -- Default fallback (optional)
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 
 -- Filetype-specific settings
 vim.api.nvim_create_autocmd('FileType', {
