@@ -35,7 +35,6 @@ local config = {
       },
     },
   },
-  -- root_dir = vim.fs.root(0, { '.git', 'mvnw', 'gradlew' }),
   root_dir = vim.fs.dirname(root_dir),
   cmd = {
     java21,
