@@ -121,6 +121,7 @@ require('lazy').setup({
     },
   },
   { 'mfussenegger/nvim-jdtls' },
+  { 'diepm/vim-rest-console' },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
