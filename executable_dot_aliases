@@ -8,12 +8,12 @@ alias ls='ls -a'
 #nvim
 # not using chatgpt atm
 # alias v='pass show personal/chatgpt && nvim'
+
 alias v='nvim'
 alias nvim-old='XDG_CONFIG_HOME=$HOME/.config/nvim-old nvim'
 
 #Git aliases
 alias gs='git status'
-# Git combo which will ask for commit, otherwise do it all
 
 # Lazygit
 alias gg='lazygit'
@@ -25,56 +25,12 @@ alias copa='copypath'
 alias ch='chezmoi'
 alias chan='chezmoi add -r ~/.config/nvim/ && chezmoi cd && git status'
 
-# #Tmux
-# # Define alias function
-# tmuxAttach() {
-#     if [ -z "$1" ]; then
-#         tmux attach
-#     else
-#         tmux attach -t "$1"
-#     fi
-# }
-#
-#
-# tmuxNewSession() {
-#     if [ -z "$1" ]; then
-#         tmux 
-#     else
-#         tmux new-session -s "$1"
-#     fi
-# }
-#
-# # Create alias
-# alias tma='tmuxAttach'
-# alias tm='tmuxNewSession'
-# alias tml='tmux ls'
-#
-# alias tmx='tmuxifier'
-
 #cd directly to specicif directorys
-alias tf='cd ~/af-projects/tajma-frontend/'
-alias tb='cd ~/af-projects/tajma-backend/'
-alias tc='cd ~/af-projects/tajma-config/'
-alias sovb='cd ~/af-projects/avon.service.meddela-sjuk-och-vab/'
-alias sjofb='cd ~/af-projects/avon.service.sjukofrisk/'
-alias sjoff='cd ~/af-projects/nova.web.sjukofrisk/'
-alias misb='cd ~/af-projects/avon.af-hr-system-saas-integrationer-batch/'
-alias misc='cd ~/af-projects/avon.af-hr-system-saas-integrationer-batch-configuration/'
 alias vc='cd ~/.config/nvim/'
-
-#Node
-# alias ns='npm start'
-# alias node='ts-node'
 
 #Open directory in vim
 alias vcv=';vc ; v'
-alias tfv='cd ~/af-projects/tajma-frontend &&; v'
-alias tbv='cd ~/af-projects/tajma-backend &&; v'
-alias tcv='cd ~/af-projects/tajma-config &&; v'
-alias misbv='cd ~/af-projects/avon.af-hr-system-saas-integrationer-batch/ &&; v'
-alias miscv='cd ~/af-projects/avon.af-hr-system-saas-integrationer-batch-configuration/ &&; v'
 #vimwiki.
-alias vwv='cd ~/vimwiki &&; v index.wiki'
 
 #edit settings.json for windows terminal
 alias vwts='cd /mnt/c/Users/hoaje/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState && v settings.json'
@@ -86,24 +42,16 @@ alias xclip='xclip -sel clip'
 alias edge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe'
 alias chrome='/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe'
 
-#Running Tajma
-alias tajba='cd ~/af-projects/tajma/tajma-backend && mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=dev"'
-alias tajfro='cd ~/af-projects/tajma/tajma-frontend &&; npm start' 
-alias sjof='cd ~/af-projects/avon.service.sjukofrisk && mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=local"'
-
 #mvn
 alias mci='mvn clean install'
 alias mcist='mvn clean install -DskipTests'
 alias msr='mvn spring-boot:run'
+
+#Print env variables
 alias pe='printenv'
 
 #autohotkey
 alias autohotkey='cd "/mnt/c/Users/hoaje/OneDrive - Arbetsförmedlingen/AutoHotkey" && v "window switcher.ahk"' 
-
-#Gradle
-alias gradle="./gradlew"
-alias run="bootRun"
-alias gbar="./gradlew build && ./gradlew bootRun"
 
 #Python
 alias python="python3"
