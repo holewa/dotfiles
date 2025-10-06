@@ -2,13 +2,27 @@ local home = vim.env.HOME
 local mason_path = vim.fn.stdpath 'data' .. '/mason'
 local launcher_jar = vim.fn.glob(mason_path .. '/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar', true, true)[1]
 local java_path = '/home/hoaje/.sdkman/candidates/java'
-local java21 = java_path .. '/21.0.6-zulu/bin/java'
-local root_dir = vim.fs.find({ '.git', 'mvnw', 'gradlew' }, { upward = true })[1]
+local java21 = java_path .. '/21.0.7-zulu/bin/java'
+local root_path = vim.fs.find({'.git', 'mvnw', 'gradlew'}, { upward = true })[1]
 
-local map = function(keys, func, opt)
-  local mode = 'n'
-  vim.keymap.set(mode, keys, func, opt)
+local root_dir
+if root_path then
+  root_dir = vim.fs.dirname(root_path)
+else
+  root_dir = vim.loop.cwd()
 end
+
+local workspace_folder_name = ''
+if root_dir then
+  workspace_folder_name = vim.fn.fnamemodify(root_dir, ':t')
+else
+  workspace_folder_name = 'default_workspace'
+end
+
+-- local map = function(keys, func, opt)
+--   local mode = 'n'
+--   vim.keymap.set(mode, keys, func, opt)
+-- end
 
 local config = {
   settings = {
@@ -35,7 +49,7 @@ local config = {
       },
     },
   },
-  root_dir = vim.fs.dirname(root_dir),
+  root_dir = root_dir,
   cmd = {
     java21,
     '-javaagent:' .. mason_path .. '/packages/jdtls/lombok.jar',
@@ -53,11 +67,9 @@ local config = {
     '-jar',
     launcher_jar,
     '-configuration',
-    '-configuration',
-
     mason_path .. '/packages/jdtls/config_linux',
     '-data',
-    vim.fn.stdpath 'cache' .. '/jdtls/' .. vim.fn.fnamemodify(root_dir, ':p:h:t'),
+    vim.fn.stdpath 'cache' .. '/jdtls/' .. workspace_folder_name,
   },
 }
 
