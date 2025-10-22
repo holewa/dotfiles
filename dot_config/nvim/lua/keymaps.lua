@@ -72,7 +72,7 @@ vim.keymap.set('n', '<leader>icl', "iconsole.log('')<ESC>hi")
 vim.keymap.set('n', '<leader>icn', "oconsole.log('')<ESC>hi")
 
 --format windows format to unix
-vim.keymap.set('n', '<Leader>gr.', ': %!dos2unix<CR>')
+vim.keymap.set('n', '<Leader>gr.', "mz:%!dos2unix<CR>`z")
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', ':noh<CR><CR>')
