@@ -10,11 +10,13 @@ $env.SDKMAN_DIR = $"($env.HOME)/.sdkman"
 $env.PATH = $"($env.HOME)/.sdkman/candidates/java/current/bin:($env.PATH)"
 $env.PATH = $"($env.HOME)/.sdkman/candidates/gradle/current/bin:($env.PATH)"
 $env.PATH = $"($env.PATH):($env.HOME)/bin"
+$env.PATH = $"($env.PATH):($env.HOME)/.local/bin"
 $env.PATH = $"($env.PATH):/usr/local/bin"
 $env.PATH = $"($env.PATH):/bin"
 
 source ~/.config/nushell/.env-variables/set_env_variables_his.nu
 source ~/.config/nushell/.env-variables/api_keys.nu
+source ~/.config/nushell/zoxide.nu
 # TODO: run through folder instead of manually do every file
 # for file in (ls ~/.config/nushell/.env-variables/*.nu) {
 #     open $file.name | column | each { run $it }
