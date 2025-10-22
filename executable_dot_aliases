@@ -1,5 +1,3 @@
-#!/bin/bash
-
 #linux commands
 alias cl='clear'
 alias cls='clear && ls'
