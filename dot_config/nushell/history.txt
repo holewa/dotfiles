@@ -1,0 +1,272 @@
+ls
+cat settings.json
+pwd
+ls
+which nu
+v .zshrc
+nvim .zshrc
+docker run -it --rm ghcr.io/ankitpokhrel/jira-cli:latest
+exit
+jira
+cl
+clear
+v
+cl
+clear
+j
+cd
+nvim .aliases
+cl
+clear
+cl
+clea
+clear
+cal
+cl
+v
+nvim .aliases
+cd
+j
+nvim .aliases
+cl
+nvim env.nu
+nvim config.nu
+cl
+source .aliases.nu
+ls
+ls -la
+cl
+source aliases.nu
+rm aliases.nu
+nvim conver.sh
+conver.sh
+./conver.sh
+source aliases_fixed.nu
+cl
+nvim aliases_fixed.nu
+rm aliases_fixed.nu
+mv conver.sh convert.sh
+nvim convert.sh
+./convert.sh
+ls -la | rg ali
+nvim fix_aliases.sh
+source aliases.nu
+nvim aliases.nu
+cl
+pe
+cl
+printenv
+cl
+clear
+source aliases.nu
+autohotkey
+source aliases.nu
+vwts
+source aliases.nu
+nvim aliases.nu
+edge
+source aliases.nu
+cl
+autohotkey
+nvim aliases.nu
+cl
+cl
+vcv
+ls
+ls -la
+ls
+cl
+v .zshrc
+ls
+cl
+nvim config.nu
+cl
+source aliases.nu
+cl
+j
+nvim .aliases
+cd .config/
+ls
+cd nushell/
+ls
+cd
+mv aliases.nu .config/nushell/
+source aliases.nu
+cd .config/nushell/
+source aliases.nu
+cl
+ls
+v config.nu
+config nu
+config nu --doc | nu-highlight | less -R
+v config.nu
+cl
+ls
+ls -la
+cd .env-variables/
+ls
+cd
+cl
+which nu
+sudo nano /etc/shells
+chsh -s /usr/local/bin/nu
+chsh -s /usr/bin/nu
+echo $shell
+echo $SHELL
+exit
+cl
+chsh -s /usr/bin/nu
+exit
+source aliases.nu
+exit
+source aliases.nu
+exit
+echo $SHELL
+echo $env.SHELL
+clv
+cl
+exit
+cl
+nvim /home/hoaje/vimwiki/index.wiki
+nvim
+nvim
+nvim
+nvim
+nvim first-call.rest
+cl
+v
+cd
+config nu
+cd .config/nushell/
+nvim config.nu
+v
+nvim config.nu
+nano config.nu
+cd
+config nu
+mv ~/aliases.nu .config/nushell/
+ls
+cl
+cd .config/nushell/
+ls
+source aliases.nu
+nvim 
+source aliases.nu
+autohotkey
+source aliases.nu
+autohotkey
+sourlf
+source aliases.nu
+c
+cl
+v
+nvim
+cd
+nvim
+cl
+nvim aliases.nu
+cd
+ls
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export PATH=$PATH:/opt/nvim-linux-x86_64/bin
+$env.PATH = $"($env.PATH):/opt/nvim-linux-x86_64/bin"
+cd .config/nushell/
+v config.nu
+cd
+vcv
+config nu
+cd .config/nushell/
+source aliases.nu
+vcv
+v
+nvim
+source aliases.nu
+cd
+cd .config/nushell/
+source aliases.nu
+v
+nvim
+nano config.nu
+ls
+source config.nu
+v
+git
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+nvim --version | lines | where $it =~ "clipboard"
+xclip
+v config.nu
+source config.nu
+xclip
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+nvim config.nu
+zsh
+cd
+zsh
+nano config.nu
+sudo nano config.nu
+source config.nu
+v
+source config.nu
+v
+source config.nu
+v
+source config.nu
+v
+source config.nu
+v
+source config.nu
+v
+cl
+v
+source config.nu
+v
+source config.nu
+v
+v config.nu
+..
+ch
+chezmoi
+chezmo
+cd .config/nushell/
+v aliases.nu
+ch
+v config.nu
+source config.nu
+v
+source config.nu
+ch
+source config.nu
+ch
+cl
+chadd
+v config.nu
+source config.nu
+chadd
+chaddu
+chadd
+cd
