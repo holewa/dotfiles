@@ -80,3 +80,6 @@ def mcidbdr [] {
     docker build -f src/main/docker/Dockerfile -t informationshistorik-sor . 
     docker run --network krh -i --rm -p 8081:8081 -p 64001:64001 -e AF_MIJO=test -e ORAUSERNAME=aisfpr -e ORAPASSWORD=aisfpr --name informationshistorik-sor informationshistorik-sor;
 }
+
+alias vnc = v ~/.config/nushell/config.nu
+
