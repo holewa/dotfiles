@@ -1,4 +1,4 @@
 $env.ORAPASSWORD = "aisfpr"
 $env.ORAUSERNAME = "aisfpr"
-# export MIJO=test
+# export MIJO=test # Kan vara acc test sys
 

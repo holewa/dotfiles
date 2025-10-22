@@ -12,6 +12,15 @@ $env.PATH = $"($env.HOME)/.sdkman/candidates/gradle/current/bin:($env.PATH)"
 $env.PATH = $"($env.PATH):($env.HOME)/bin"
 
 
+
+
+source ~/.config/nushell/.env-variables/set_env_variables_his.nu
+# TODO: run through folder instead of manually do every file
+# for file in (ls ~/.config/nushell/.env-variables/*.nu) {
+#     open $file.name | column | each { run $it }
+# }
+
+
 def chm [path] {
     chmod +x $path
 }
@@ -20,6 +29,7 @@ def chadd [] {
     chezmoi add ~/.aliases
     chezmoi add ~/.tmux.conf
     chezmoi add -r ~/.config/nvim
+    chezmoi add -r ~/.config/nushell
 }
 
 

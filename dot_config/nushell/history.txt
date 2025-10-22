@@ -270,3 +270,153 @@ chadd
 chaddu
 chadd
 cd
+chezmoi add .config/nushell/
+cd .config/nushell/
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+cd
+v .env-variables/api_keys.sh
+cd
+cd .env-variables/
+ls
+v set_env_variables_his.sh
+cd
+cp -r .env-variables/ .env-variables-nu
+cd .env-variables-nu/
+ls
+rm api_keys.sh
+mv set_env_variables_his.sh set_env_variables_his.nu
+rm set
+cl
+ls
+rm set_env_variables_mis.sh
+rm set_env_variables_sjof.sh
+rm set_env_variables_underlagsfragor.sh
+ls
+v set
+v set_env_variables_his.nu
+cd
+mv .env-variables-nu/ .config/nushell/
+cd .config/nushell/
+v config.nu
+source config.nu
+v config.nu
+ls
+0
+5
+mv .env-variables-nu/ .env-variables
+ls
+config nu
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+ls ~/.config/nushell/.env-variables/*.nu | get columns
+ls ~/.config/nushell/.env-variables/ | get columns
+ls ~/.config/nushell/.env-variables | get columns
+ls .env-variables/
+ls .env-variables/ | get colums
+ls .env-variables/ | columns
+ls .env-variables/ | first 1
+ls .env-variables/ | first 1.name
+ls .env-variables/ | 0
+ls .env-variables/ | first 1.name
+ls .env-variables/ | first 1.getName
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+v config.nu
+source config.nu
+for file in (ls ~/.config/nushell/.env-variables/*.nu) {<\n>    open $file.name | get Column0 | each { run $it }<\n>}<\n>
+ls
+ls | colum
+ls | column
+ls | columns
+cl
+ls | columns
+cl
+ls | column
+cl
+ls | columns
+ls | columns.name
+ls | Columns
+ls | Column
+ls | get column
+ls | get columns
+ls | columns
+ls | columns | first
+ls
+ls | get #
+ls | get columns
+ls | get column
+ls | column
+for file in (ls ~/.config/nushell/.env-variables/*.nu) {<\n>    let lines = (open $file.name | get Column0)<\n>    each $lines { run $it }<\n>}<\n>
+ls
+v config.nu
+ls
+v env.nu
+cat history.txt
+cat history.txt | column
+ls
+v config.nu
+source config.nu
+cd .env-variables/
+v config.nu
+..
+v config.nu
+cd .env-variables/
+v set_env_variables_his.nu
+source set_env_variables_his.nu
+v set_env_variables_his.nu
+source set_env_variables_his.nu
+v set_env_variables_his.nu
+source set_env_variables_his.nu
+..
+source config.nu
+v .env-variables/api_keys.sh
+cd .env-variables/
+v set_env_variables_his.nu
+source set_env_variables_his.nu
+v set_env_variables_his.nu
+source set_env_variables_his.nu
+cd
+chadd
+ch add -r .config/nushell/.env-variables/
+d
+cd .config/nushell/.env-variables/
+ls
+v set
+v set_env_variables_his.nu
+chadd
+cd
+chadd
+cd .config/nushell/.env-variables/
+ls
+v set_env_variables_his.nu
+chadd
+cd
+ch add -r .config/nushell/.env-variables/
+cat chadd
+cd .config/nushell/.env-variables/
+where chadd
+which chadd
+ls
+..
+v config.nu
+source config.nu
+cd .env-variables/
+v set_env_variables_his.nu
