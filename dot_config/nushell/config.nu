@@ -10,17 +10,20 @@ $env.SDKMAN_DIR = $"($env.HOME)/.sdkman"
 $env.PATH = $"($env.HOME)/.sdkman/candidates/java/current/bin:($env.PATH)"
 $env.PATH = $"($env.HOME)/.sdkman/candidates/gradle/current/bin:($env.PATH)"
 $env.PATH = $"($env.PATH):($env.HOME)/bin"
-
-
-
+$env.PATH = $"($env.PATH):/usr/local/bin"
+$env.PATH = $"($env.PATH):/bin"
 
 source ~/.config/nushell/.env-variables/set_env_variables_his.nu
+source ~/.config/nushell/.env-variables/api_keys.nu
 # TODO: run through folder instead of manually do every file
 # for file in (ls ~/.config/nushell/.env-variables/*.nu) {
 #     open $file.name | column | each { run $it }
 # }
 
+$env.PATH = $env.PATH + ":."
 
+
+#Add config files/folders to chezmoi
 def chm [path] {
     chmod +x $path
 }
@@ -29,8 +32,17 @@ def chadd [] {
     chezmoi add ~/.aliases
     chezmoi add ~/.tmux.conf
     chezmoi add -r ~/.config/nvim
-    chezmoi add -r ~/.config/nushell
+    chezmoi add ~/.config/nushell/aliases.nu
+    chezmoi add ~/.config/nushell/config.nu
 }
+
+## ${UserConfigDir}/nushell/env.nu
+#mkdir $"($nu.cache-dir)"
+#carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"
+
+# ${UserConfigDir}/nushell/config.nu
+#source $"($nu.cache-dir)/carapace.nu"
+
 
 
 # config.nu
