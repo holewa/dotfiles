@@ -135,3 +135,14 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.g.snacks_animate = false
+
+-- Save and restore folds automatically
+-- TODO: Nothing to do with ww/gtd
+vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
+  pattern = "?*",
+  command = "mkview",
+})
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+  pattern = "?*",
+  command = "silent! loadview",
+})

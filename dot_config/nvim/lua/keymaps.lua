@@ -72,7 +72,16 @@ vim.keymap.set('n', '<leader>icl', "iconsole.log('')<ESC>hi")
 vim.keymap.set('n', '<leader>icn', "oconsole.log('')<ESC>hi")
 
 --format windows format to unix
-vim.keymap.set('n', '<Leader>gr.', "mz:%!dos2unix<CR>`zzz")
+vim.keymap.set('n', '<Leader>gr.', function()
+  local file = vim.api.nvim_buf_get_name(0)
+  if file == "" then
+    vim.notify("Buffer has no file name!", vim.log.levels.ERROR)
+    return
+  end
+  vim.cmd('write')  -- save buffer first
+  os.execute('dos2unix "' .. file .. '"')
+  vim.cmd('edit')   -- reload buffer
+end)
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', ':noh<CR><CR>')
@@ -149,32 +158,15 @@ vim.keymap.set("n", "-", function()
   require("oil").toggle_float()
 end, { desc = "Toggle Oil Float" })
 
-local function dos2unix_function()
-  -- Save search register, cursor position
-  local save_search = vim.fn.getreg('/')
-  local line = vim.api.nvim_win_get_cursor(0)[1]
-  local col = vim.api.nvim_win_get_cursor(0)[2]
+-- GTD-plugin keymaps 
 
-  -- Try block equivalent
-  local ok, err = pcall(function()
-    vim.opt.fileformat = 'unix'    -- set ff=unix
-    vim.cmd('write!')              -- save file forcibly
-    -- You can also add substitution here if needed
-    -- vim.cmd([[%s/\r$//e]])
-  end)
-
-  if not ok then
-    print("Sorry, the file is not saved: " .. err)
-  end
-
-  -- Restore search register and cursor position
-  vim.fn.setreg('/', save_search)
-  vim.api.nvim_win_set_cursor(0, {line, col})
-end
-
-vim.keymap.set('n', 'p', function()
-  -- Delete without affecting registers, then paste
-  vim.cmd('normal! p')
-  -- Run dos2unix function to fix line endings & save without jumps
-  dos2unix_function()
-end, { noremap = true, silent = true })
+local move_task_to = require 'custom.my-plugins.gtd'
+vim.keymap.set('n', '<leader>mf', function()
+  move_task_to('Followup') 
+end, { desc = 'Move task to FOLLOWUP' })
+vim.keymap.set('n', '<leader>mp', 
+  function() move_task_to('Projects')
+  end, { desc = 'Move task to PROJECTS' })
+vim.keymap.set('n', '<leader>md', 
+  function() move_task_to('Done') 
+  end, { desc = 'Move task to DONE' })
