@@ -39,6 +39,7 @@ alias xclip='xclip -sel clip'
 #browser
 alias edge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe'
 alias chrome='/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe'
+alias arc='/mnt/c/Program\ Files/WindowsApps/TheBrowserCompany.Arc_1.77.1.3_x64__ttt1ap7aakyb4/Arc.exe'
 
 #mvn
 alias mci='mvn clean install'
