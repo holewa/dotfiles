@@ -4,26 +4,27 @@ source aliases.nu
 $env.PATH = $"($env.PATH):/opt/nvim-linux-x86_64/bin"
 $env.PATH = $"($env.PATH):($env.HOME):/bin"
 $env.PATH = $"($env.HOME):/.local/bin:($env.PATH)"
-$env.PATH =  $"/usr/share/maven/bin:($env.PATH)"
+
 $env.SDKMAN_DIR = $"($env.HOME)/.sdkman"
-# # [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 $env.PATH = $"($env.HOME)/.sdkman/candidates/java/current/bin:($env.PATH)"
+$env.PATH = $"($env.HOME)/.sdkman/candidates/maven/current/bin:($env.PATH)"
 $env.PATH = $"($env.HOME)/.sdkman/candidates/gradle/current/bin:($env.PATH)"
 $env.PATH = $"($env.PATH):($env.HOME)/bin"
 $env.PATH = $"($env.PATH):($env.HOME)/.local/bin"
 $env.PATH = $"($env.PATH):/usr/local/bin"
 $env.PATH = $"($env.PATH):/bin"
 
-source ~/.config/nushell/.env-variables/set_env_variables_his.nu
-source ~/.config/nushell/.env-variables/api_keys.nu
+source ~/.config/nushell/env-variables/set_env_variables_his.nu
+source ~/.config/nushell/env-variables/api_keys.nu
 source ~/.config/nushell/zoxide.nu
+source ~/.config/nushell/carapace.nu
 # TODO: run through folder instead of manually do every file
 # for file in (ls ~/.config/nushell/.env-variables/*.nu) {
 #     open $file.name | column | each { run $it }
 # }
 
+#Workaround to for adding ./ before scripts
 $env.PATH = $env.PATH + ":."
-
 
 #Add config files/folders to chezmoi
 def chm [path] {
@@ -37,6 +38,9 @@ def chadd [] {
     chezmoi add ~/.config/nushell/aliases.nu
     chezmoi add ~/.config/nushell/config.nu
 }
+
+# Hide the banner
+$env.config.show_banner = false
 
 ## ${UserConfigDir}/nushell/env.nu
 #mkdir $"($nu.cache-dir)"
