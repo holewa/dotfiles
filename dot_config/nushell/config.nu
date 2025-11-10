@@ -1,4 +1,10 @@
+
 source aliases.nu
+
+## ${UserConfigDir}/nushell/env.nu
+$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+mkdir $"($nu.cache-dir)"
+carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"
 
 # Path variables
 $env.PATH = $"($env.PATH):/opt/nvim-linux-x86_64/bin"
@@ -17,7 +23,7 @@ $env.PATH = $"($env.PATH):/bin"
 source ~/.config/nushell/env-variables/set_env_variables_his.nu
 source ~/.config/nushell/env-variables/api_keys.nu
 source ~/.config/nushell/zoxide.nu
-source ~/.config/nushell/carapace.nu
+
 # TODO: run through folder instead of manually do every file
 # for file in (ls ~/.config/nushell/.env-variables/*.nu) {
 #     open $file.name | column | each { run $it }
@@ -41,6 +47,7 @@ def chadd [] {
 
 # Hide the banner
 $env.config.show_banner = false
+
 
 ## ${UserConfigDir}/nushell/env.nu
 #mkdir $"($nu.cache-dir)"
