@@ -153,7 +153,18 @@ return  {
         { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
         { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
 
-        { "grn", vim.lsp.buf.rename, desc = "[r]e[n]ame" },
+        -- { "grn", vim.lsp.buf.rename, desc = "[r]e[n]ame" },
+        { 
+            "grn",
+            function()
+                vim.lsp.buf.rename()
+                vim.defer_fn(function()
+                    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+                end, 10) -- delay in ms
+            end,
+            desc = "rename then exit insert mode"
+        },
+
         { "gra", vim.lsp.buf.code_action, desc = "[g]oto code [a]ction", { 'n', 'x' } },
         { "grr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
         { "gri", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
