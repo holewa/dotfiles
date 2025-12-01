@@ -25,6 +25,9 @@ end
 -- end
 
 local config = {
+  handlers = {
+    ["$/progress"] = function(_, _) end,
+  },
   settings = {
     java = {
       format = {
