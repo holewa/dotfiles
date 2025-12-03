@@ -146,3 +146,8 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   pattern = "?*",
   command = "silent! loadview",
 })
+
+-- Prevent mouse wheel from scrolling the terminal while in Neovim
+vim.keymap.set("", "<ScrollWheelUp>", "<C-y>", {})
+vim.keymap.set("", "<ScrollWheelDown>", "<C-e>", {})
+
