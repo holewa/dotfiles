@@ -129,7 +129,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-
 vim.api.nvim_set_keymap('n', '<C-w>r', '<C-w>v', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<C-w>b', '<C-w>s', { noremap = true, silent = true })
@@ -167,6 +166,9 @@ end, { desc = 'Move task to FOLLOWUP' })
 vim.keymap.set('n', '<leader>mp', 
   function() move_task_to('Projects')
   end, { desc = 'Move task to PROJECTS' })
+vim.keymap.set('n', '<leader>md', 
+  function() move_task_to('Done') 
+  end, { desc = 'Move task to DONE' })
 vim.keymap.set('n', '<leader>md', 
   function() move_task_to('Done') 
   end, { desc = 'Move task to DONE' })

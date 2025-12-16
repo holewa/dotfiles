@@ -4,6 +4,7 @@ local launcher_jar = vim.fn.glob(mason_path .. '/packages/jdtls/plugins/org.ecli
 local java_path = home .. '/.sdkman/candidates/java'
 local java21 = java_path .. '/21.0.7-zulu/bin/java'
 local root_path = vim.fs.find({'.git', 'mvnw', 'gradlew'}, { upward = true })[1]
+local java_debug_jar = ""
 
 local root_dir
 if root_path then
@@ -81,4 +82,18 @@ local config = {
   -- on_attach = lsp_keymaps,
 -- }))
 --
-require('jdtls').start_or_attach(config)
+-- require('jdtls').start_or_attach(config)
+
+local jdtls = require("jdtls")
+
+local bundles = {
+  vim.fn.glob(mason_path .. "/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", true),
+}
+
+config.init_options = {
+  bundles = bundles,
+}
+
+jdtls.start_or_attach(config)
+
+
