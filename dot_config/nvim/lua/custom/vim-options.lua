@@ -146,3 +146,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
     vim.opt.mouse = "a"
   end,
 })
+
+vim.opt.viewoptions = {}
+
+vim.opt.signcolumn = "yes:2"
