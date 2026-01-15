@@ -150,3 +150,5 @@ vim.api.nvim_create_autocmd("VimEnter", {
 vim.opt.viewoptions = {}
 
 vim.opt.signcolumn = "yes:2"
+
+vim.api.nvim_set_keymap('n', '<LeftMouse>', ':set mouse=a<CR><LeftMouse>', { noremap = true, silent = true })

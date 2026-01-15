@@ -93,8 +93,8 @@ return {
             layouts = {
                 {
                     elements = {
-                        { id = "scopes",  size = 0.6 }, -- variables
-                        { id = "console", size = 0.4 }, -- program output / stacktrace
+                        { id = "scopes",  size = 0.5 }, -- variables
+                        { id = "console", size = 0.5 }, -- program output / stacktrace
                     },
                     size = 15,
                     position = "bottom",
@@ -104,6 +104,7 @@ return {
         vim.keymap.set("n", "<leader>d", "<nop>")
 
         require("nvim-dap-virtual-text").setup {
+            only_first_definition = false,
             highlight_changed_variables = false,
             all_frames = true,
         }
