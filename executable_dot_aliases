@@ -61,9 +61,6 @@ alias ezr="eza -T -R -L=2 -s=type"
 alias ezs='function _eza_search() { rg -l "$1" | eza -l --stdin; }; _eza_search'
 alias ezf='function _eza_find() { fd "$1" | eza -l --stdin; }; _eza_find'
 
-#fd-find
-alias fd=fdfind
-
 alias dns-switch="sudo ~/dns-switch.sh"
 
 #vimwiki
