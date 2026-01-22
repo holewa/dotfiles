@@ -159,15 +159,18 @@ end, { desc = "Toggle Oil Float" })
 -- GTD-plugin keymaps
 
 local move_task_to = require("custom.my-plugins.gtd")
-vim.keymap.set("n", "<leader>mf", function()
-	move_task_to("Followup")
-end, { desc = "Move task to FOLLOWUP" })
-vim.keymap.set("n", "<leader>mp", function()
-	move_task_to("Projects")
-end, { desc = "Move task to PROJECTS" })
-vim.keymap.set("n", "<leader>md", function()
-	move_task_to("Done")
-end, { desc = "Move task to DONE" })
-vim.keymap.set("n", "<leader>md", function()
-	move_task_to("Done")
-end, { desc = "Move task to DONE" })
+
+local mappings = {
+  f = { "Followup", "Follow up" },
+  p = { "Projects", "Projects" },
+  d = { "Done", "Done" },
+  s = { "Someday-maybe", "Someday-maybe" },
+}
+
+for key, data in pairs(mappings) do
+  local target, label = data[1], data[2]
+
+  vim.keymap.set({ "n", "v" }, "<leader>m" .. key, function()
+    move_task_to(target)
+  end, { desc = "Move task to " .. label })
+end

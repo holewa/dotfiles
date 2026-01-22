@@ -24,6 +24,7 @@ return {
         { "g", group = "goto" },
         { "gs", group = "surround" },
         { "z", group = "fold" },
+        { "m", group = "[M]ove task" },
         {
           "<leader>b",
           group = "buffer",
