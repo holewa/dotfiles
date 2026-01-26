@@ -164,6 +164,7 @@ local mappings = {
   f = { "Followup", "Follow up" },
   p = { "Projects", "Projects" },
   d = { "Done", "Done" },
+  n = { "Next action", "next action" },
   s = { "Someday-maybe", "Someday-maybe" },
 }
 
