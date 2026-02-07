@@ -1,6 +1,14 @@
 -- Adds git related signs to the gutter, as well as utilities for managing changes
 -- NOTE: gitsigns is already included in init.lua but contains only the base
 -- config. This will add also the recommended keymaps.
+vim.keymap.set('n', '<leader>gb', function()
+  blame_on = not blame_on
+  if blame_on then
+    vim.cmd [[autocmd CursorHold * lua require('gitsigns').blame_line{full=true}]]
+  else
+    vim.cmd [[autocmd! CursorHold *]]
+  end
+end, { noremap = true, silent = true })
 
 return {
   {
@@ -54,8 +62,12 @@ return {
         map('n', '<leader>hu', gitsigns.stage_hunk, { desc = 'git [u]ndo stage hunk' })
         map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'git [R]eset buffer' })
         map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'git [p]review hunk' })
-        map('n', '<leader>hb', gitsigns.blame_line, { desc = 'git [b]lame line' })
+        -- map('n', '<leader>hb', gitsigns.blame_line, { desc = 'git [b]lame line' })
+
+
+
         map('n', '<leader>hd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
+
         map('n', '<leader>hD', function()
           gitsigns.diffthis '@'
         end, { desc = 'git [D]iff against last commit' })
@@ -63,6 +75,7 @@ return {
         map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
         map('n', '<leader>tD', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' })
       end,
+
     },
   },
 }

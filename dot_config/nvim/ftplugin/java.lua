@@ -3,6 +3,9 @@ local mason_path = vim.fn.stdpath 'data' .. '/mason'
 local launcher_jar = vim.fn.glob(mason_path .. '/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar', true, true)[1]
 local java_path = home .. '/.sdkman/candidates/java'
 local java21 = java_path .. '/21.0.7-zulu/bin/java'
+-- 25 Not supported yet
+local java25 = java_path .. '/25.0.2-zulu/bin/java'
+
 local root_path = vim.fs.find({'.git', 'mvnw', 'gradlew'}, { upward = true })[1]
 local java_debug_jar = ""
 

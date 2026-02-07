@@ -75,6 +75,7 @@ return  {
             },
         },
         quickfile = { enabled = true },
+        hidden = { enabled = true},
         scope = { enabled = true },
         scroll = { enabled = true },
         statuscolumn = { enabled = true },
