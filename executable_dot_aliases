@@ -73,4 +73,4 @@ alias mcidbdr="mci -DskipTests && docker build -f src/main/docker/Dockerfile -t 
 alias cat="batcat"
 
 alias wf="j /mnt/c/Users/hoaje/Downloads"
-uao() { unzip "$1" && mv "${1%.zip}" ~/demo-projects && cd ~/demo-projects && v }
+uao() { unzip "$1" && mv "${1%.zip}" ~/demo-projects && cd ~/demo-projects/"${1%.zip}" && v }
