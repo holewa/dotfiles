@@ -71,24 +71,13 @@ end, { expr = true })
 vim.keymap.set("n", "<leader>icl", "iconsole.log('')<ESC>hi")
 vim.keymap.set("n", "<leader>icn", "oconsole.log('')<ESC>hi")
 
---format windows format to unix
-vim.keymap.set("n", "<Leader>gr.", function()
-	local file = vim.api.nvim_buf_get_name(0)
-	if file == "" then
-		vim.notify("Buffer has no file name!", vim.log.levels.ERROR)
-		return
-	end
-	vim.cmd("write") -- save buffer first
-	os.execute('dos2unix "' .. file .. '"')
-	vim.cmd("edit") -- reload buffer
-end)
-
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", ":noh<CR><CR>")
 
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
 
 -- Vimwiki in note window
 -- local spawn_note_window = require 'custom.plugins.spawn-note-window'

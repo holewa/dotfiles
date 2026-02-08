@@ -81,6 +81,7 @@ vim.api.nvim_create_autocmd('FileType', {
 --    :Lazy update
 --
 require 'keymaps'
+require 'autocmd'
 
 
 -- NOTE: Here is where you install your plugins.
@@ -309,6 +310,7 @@ require('lazy').setup({
           capabilities = {},
           settings = {
             lua = {
+              diagnostics = { globals = { "vim" } },
               completion = {
                 callsnippet = 'replace',
               },
