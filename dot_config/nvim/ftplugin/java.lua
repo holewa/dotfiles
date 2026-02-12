@@ -23,7 +23,7 @@ else
   workspace_folder_name = 'default_workspace'
 end
 
--- local map = function(keys, func, opt)
+-- local map = function(keder>Fys, func, opt)
 --   local mode = 'n'
 --   vim.keymap.set(mode, keys, func, opt)
 -- end
@@ -34,10 +34,10 @@ local config = {
       format = {
         settings = {
           enabled = true,
-          url = vim.fn.expand '~/.local/share/ecplipse/eclipse-java-google-style.xml',
+          -- url = vim.fn.expand '~/.local/share/ecplipse/eclipse-java-google-style.xml',
           -- url = 'https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml',
-          -- url = vim.fn.expand '~/.local/share/nvim/intellij-java-google-style.xml', -- optional formatter config file
-          profile = 'GoogleStyle',
+          url = vim.fn.expand '~/.local/share/nvim/intellij-java-google-style.xml' -- optional formatter config file
+          -- profile = 'GoogleStyle',
         },
       },
       configuration = {

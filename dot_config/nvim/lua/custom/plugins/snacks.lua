@@ -6,7 +6,6 @@ return  {
     opts = {
         bigfile = { enabled = true },
         dashboard = { enabled = true },
-        explorer = { enabled = true },
         indent = { enabled = true },
         input = { enabled = true },
         notifier = {
@@ -15,7 +14,13 @@ return  {
         },
         picker = {
             sources = {
+                files = {
+                    hidden = true, -- show dotfiles in fuzzy finder
+                    ignored = true, -- optional: show gitignored files
+                },
                 explorer = {
+                    hidden = true,
+                    ignored = true,
                     actions = {
                         recursive_toggle = function(picker, item)
                             local Actions = require 'snacks.explorer.actions'
