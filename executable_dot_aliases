@@ -57,7 +57,7 @@ alias autohotkey='cd "/mnt/c/Users/hoaje/OneDrive - Arbetsförmedlingen/AutoHotk
 alias python="python3"
 
 #eza
-alias ez="eza -T -L=1 -s=type"
+alias ez="eza -T -L=2 -s=type"
 alias ezr="eza -T -R -L=2 -s=type"
 alias ezs='function _eza_search() { rg -l "$1" | eza -l --stdin; }; _eza_search'
 alias ezf='function _eza_find() { fd "$1" | eza -l --stdin; }; _eza_find'
@@ -72,5 +72,10 @@ alias mcidbdr="mci -DskipTests && docker build -f src/main/docker/Dockerfile -t 
 
 alias cat="batcat"
 
-alias wf="j /mnt/c/Users/hoaje/Downloads"
+alias wf="j /mnt/c/Users/hoaje"
+alias wfd="j /mnt/c/Users/hoaje/Downloads"
 uao() { unzip "$1" && mv "${1%.zip}" ~/demo-projects && cd ~/demo-projects/"${1%.zip}" && v }
+
+ex() {
+  x "$1" && sudo mv fzf /usr/local/bin/ && rm "$1"
+}
